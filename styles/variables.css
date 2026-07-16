@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
 :root {
 
 --primary: #2563EB;
@@ -34,5 +37,21 @@
 
 --border: #CBD5E1;
 
+--primary-font: "Inter" , sans-serif;
+
+--heading1-font-size: 2.25rem;
+--heading2-font-size: 1.5rem;
+
+--card-title-font-size: 0.875rem;
+--card-description-font-size: 0.875rem;
+
+--card-number-font-size: 1.875rem;
+
+--nav-font-size: 0.875rem;
+
+--primary-btn-font-size: 0.875rem;
+
 
 }
+
+
