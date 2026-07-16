@@ -1,0 +1,38 @@
+:root {
+
+--primary: #2563EB;
+--primary-hover: #1D4ED8;
+--primary-light: #DBEAFE;
+
+
+--secondary: #0F172A;
+--secondary-light: #334155;
+
+
+--success: #16A34A;
+--success-light: #DCFCE7;
+
+
+--danger: #DC2626;
+--danger-light: #FEE2E2;
+
+
+--warning: #F59E0B;
+
+
+--info: #0EA5E9;
+
+
+--background: #F8FAFC;
+
+--card-background: #FFFFFF;
+
+
+--text-primary: #0F172A;
+--text-secondary: #475569;
+
+
+--border: #CBD5E1;
+
+
+}
