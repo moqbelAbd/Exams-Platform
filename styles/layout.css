@@ -33,6 +33,10 @@ ul{
     list-style:none;
 }
 
+button{
+    font-family: inherit;
+}
+
 .container{
     padding:40px 0;
     margin:40px
