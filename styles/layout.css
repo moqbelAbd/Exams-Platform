@@ -1,0 +1,47 @@
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    background:var(--background);
+    color:var(--white);
+    font-family:var(--primary-font);
+    line-height:1.7;
+    padding-top: 90px;
+}
+
+img{
+    width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+}
+
+ul{
+    list-style:none;
+}
+
+.container{
+    padding:40px 0;
+    margin:40px
+}
+
+section{
+    padding:40px 0;
+}
+
+.section-title{
+    margin: 30px;
+}
