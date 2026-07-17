@@ -1,0 +1,50 @@
+/* =========================================
+   Profile Modal Styles
+   ========================================= */
+
+/* The Overlay Container (Targeting the div in your HTML) */
+#user-profile {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(15, 23, 42, 0.4); /* Dark translucent overlay using --secondary color base */
+    backdrop-filter: blur(1.2px); /* Creates the background blur */
+    -webkit-backdrop-filter: blur(2px);
+    z-index: 1050; /* Ensures it sits above the Bootstrap fixed-top navbar */
+    overflow-y: auto;
+}
+
+/* The White Modal Box */
+#user-profile .profile-modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    margin: 5rem auto; /* Centers it horizontally, adds top margin */
+    background-color: var(--card-background);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+/* Avatar Circle */
+#user-profile .avatar-circle {
+    width: 75px;
+    height: 75px;
+    background-color: var(--primary-light);
+    color: var(--primary);
+}
+
+/* Role Badge */
+#user-profile .role-badge {
+    background-color: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid var(--primary-light);
+    font-size: 0.85rem;
+}
+
+/* Fix for FontAwesome Icon inside badge */
+#user-profile .role-badge i {
+    font-size: 0.8rem;
+}
