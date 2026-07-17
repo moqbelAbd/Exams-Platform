@@ -3,6 +3,8 @@
 
 main{
     padding : 2rem 1.5rem;
+    margin-inline: auto;
+    max-width: 80rem;
 
 }
 
@@ -15,13 +17,14 @@ h1{
 h1 + p{
     margin-top: 2px;
     font-size: 0.875rem;
+    margin-bottom: 1.5rem;
 
     color: var(--text-secondary);
 }
 
 .cards-container{
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: calc(0.25rem * 4);
     margin-bottom: 1.5rem;
 }
@@ -51,9 +54,6 @@ h1 + p{
     height: 1rem;
 }
 
-.card .students-icon{
-    color: #155dfb;
-}
 
 .card .card-counter{
     font-size: 1.5rem;
@@ -100,19 +100,165 @@ main .tabs{
 main .tabs button{
     padding-block: 0.375rem;
     padding-inline: 1rem;
+    font-size: 0.875rem;
 
-
-    background-color: white;
+    font-weight: var(--medium-font-weight);
     border-radius: 0.25rem;
     border: none;
-    
 }
 
-main .tabs button .active{
-    font-size: 0.875rem;
+main .tabs .active-tab{
+    background-color: white;
     color: var(--secondary);
+}
+
+main .tabs .inactive-tab{
+    color: var(--text-secondary);
+}
+
+main .tabs .inactive-tab:hover{
+    color: var(--secondary);
+}
+
+
+main .searchbox-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+main .searchbox{
+    position: relative;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+}
+
+main .searchbox svg{
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    transform:  translate(50%,50%);
+
+    color: var(--text-secondary);
+}
+
+main .searchbox input{
+    padding-left: 2.25rem;
+    padding-right: 0.75rem;
+    padding-block: 0.5rem;
+    font-size: var(--text-sm);
+}
+
+main .add-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: var(--text-sm);
+    padding-block: 0.5rem;
+    padding-inline: 1rem;
+
+    background-color: var(--primary);
+    border-radius: 0.25rem;
+    color: white;
     font-weight: var(--medium-font-weight);
+    border: none;
 
 }
 
+
+main .add-btn svg{
+    display: block;
+
+    width: 1rem;
+    height: 1rem;
+}
+
+
+
+/* TABLE */
+
+.exams-table{
+    display: block;
+}
+
+.students-table{
+    display: none;
+}
+
+.exam-status{
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.125rem 0.625rem;
+  border-radius: 4px;
+  
+}
+
+td .exam-status.active{
+  border: 1px solid #B9F8CF;
+  background-color: #F0FDF4;
+  color: #008236;
+}
+
+td .exam-status.inactive{
+  border: 1px solid #E5E7EB;
+  background-color: #F3F4F6;
+  color: #6A7282;
+}
+
+td .exam-set_active{
+  border-color: var(--border);
+  color: var(--secondary);
+  background: none;
+}
+
+td .exam-set_active:hover{
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+
+td .attempts_btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+
+  color: var(--primary);
+  background-color: rgba(37, 99, 235,0.1);
+}
+
+td .attempts_btn svg{
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+td .attempts_btn svg circle, 
+td .attempts_btn svg path {
+  stroke-width: 2.5px; 
+}
+
+td .attempts_btn:hover{
+  background-color: rgba(29, 78, 216,0.2);
+}
+
+table .delete_btn{
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+
+  color: #e7000b;
+  background-color: #fef2f2;
+}
+
+td .delete_btn svg{
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+td .delete_btn svg circle, 
+td .delete_btn svg path {
+  stroke-width: 2.5px; 
+}
 
