@@ -25,152 +25,57 @@ const dashboardPage =
         ? pages.teacherDashboard
         : pages.studentDashboard;
 
-
-let dashboardLink = "";
-let profileButton = "";
-let authButton = "";
-
-if (isSignedIn) {
-
-    dashboardLink = `
-        <li class="nav-item">
-            <a class="nav-link" href="${dashboardPage}>
-                Dashboard
-            </a>
-        </li>
-    `;
-
-    profileButton = `
-        <li class="nav-item">
-            <button
-                id="profile-btn"
-                class="nav-link btn border-0 bg-transparent">
-
-                Profile
-
+    
+const extraNavLinks = isSignedIn ? `
+        <a href="${dashboardPage}">Dashboard</a>
+        <a href="#" id="profile-btn">Profile</a>
+    ` : "";
+ 
+    const authArea = isSignedIn ? `
+        <div class="auth-buttons">
+            <button id="logout-btn" class="logout-btn">
+                Sign Out
             </button>
-        </li>
-    `;
-
-    authButton = `
-        <button
-            id="logout-btn"
-            class="btn btn-outline-danger">
-
-            Sign Out
-
-        </button>
-    `;
-
-}
-else{
-
-    authButton = `
-        <a
-            href="${pages.login}"
-            class="btn btn-primary">
-
-            Sign In
-
-        </a>
-    `;
-
-}
-
-header.innerHTML = `
-
-<nav class="navbar navbar-expand-lg bg-white shadow-sm fixed-top">
-
-    <div class="container">
-
-        <a>
-
-            <img class="navbar-brand"
-                src="/assets/codeExam Logo.png"
-                height="38px"
-                width="38px"
-                alt="Logo">
-
-        </a>
-
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbar">
-
-            <span class="navbar-toggler-icon"></span>
-
-        </button>
-
-        <div
-            class="collapse navbar-collapse justify-content-center"
-            id="navbar">
-
-            <ul class="navbar-nav">
-
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="${pages.home}">
-
-                        Home
-
-                    </a>
-
-                </li>
-
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="homepage.html#about-section">
-
-                        About
-
-                    </a>
-
-                </li>
-
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="homepage.html#contact-section">
-
-                        Contact
-
-                    </a>
-
-                </li>
-
-                ${dashboardLink}
-
-                ${profileButton}
-
-            </ul>
-
         </div>
-
-        ${authButton}
-
-    </div>
-
-</nav>
-
-`;
-
+    ` : `
+        <div class="auth-buttons">
+            <a href="${pages.login}" class="btn-signup">
+                Sign In
+            </a>
+        </div>
+    `;
+ 
+    header.innerHTML = `
+        <div class="header-content">
+ 
+            <!-- Original logo image -->
+            <a href="${pages.home}" class="logo">
+                <img src="/assets/codeExam Logo.png" height="38" width="38" alt="Logo">
+            </a>
+ 
+            <!-- Main nav -->
+            <nav>
+                <a href="${pages.home}">Home</a>
+                <a href="/pages/homepage/homepage.html#about-section">About</a>
+                <a href="/pages/homepage/homepage.html#contact-section">Contact</a>
+                ${extraNavLinks}
+            </nav>
+ 
+            <!-- Auth area -->
+            ${authArea}
+ 
+        </div>
+    `;
 
 const profileBtn = document.getElementById("profile-btn");
 
 if(profileBtn){
 
-    profileBtn.addEventListener("click", ()=>{
+    profileBtn.addEventListener("click", (e)=>{
 
-        document
-            .getElementById("user-profile")
-            .style.display = "block";
+        e.preventDefault();
+            const profilePanel = document.getElementById("user-profile");
+            if (profilePanel) profilePanel.style.display = "block";
 
     });
 
@@ -178,17 +83,11 @@ if(profileBtn){
     
 }
     const logoutBtn = document.getElementById("logout-btn");
-
-if(logoutBtn){
-
-    logoutBtn.onclick = () => {
-
-        sessionStorage.removeItem("auth");
-
-        location.href = "homepage.html";
-
-    };
-
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", () => {
+            sessionStorage.removeItem("auth");
+            location.href = pages.home;
+        });
 }
 
 }
