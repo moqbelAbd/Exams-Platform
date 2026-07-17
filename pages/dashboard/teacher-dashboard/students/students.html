@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="students.css">
+    
+    <script type="module" src="../../../../common-js/main.js" defer></script>
+    <script type="module" src="students.js" defer></script>
+</head>
+<body>
+  
+<div class="add-student-wrapper" id="add-student-container">
+        <h3 class="add-student-heading">Add Student</h3>
+
+        <form id="add-student-form">
+
+            <div class="add-student-inputs">
+                <div class="add-student-input-block">
+                    <label for="add-fullname">Student Full Name</label>
+                    <input type="text" id="add-fullname" placeholder="Enter Full Name" required>
+                </div>
+
+                <div class="add-student-input-block">
+                    <label for="add-national-id">National ID</label>
+                    <input type="text" id="add-national-id" placeholder="Enter National ID" required>
+                </div>
+
+                <div class="add-student-input-block">
+                    <label for="add-username">User Name</label>
+                    <div class="input-group">
+                        <input type="text" id="add-username" class="readonly-input" placeholder="Auto-generated" readonly>
+                        <button class="copy-btn" type="button" data-target="add-username">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="add-student-input-block">
+                    <label for="add-password">User Password</label>
+                    <div class="input-group">
+                        <input type="text" id="add-password" class="readonly-input" placeholder="Auto-generated" readonly>
+                        <button class="copy-btn" type="button" data-target="add-password">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-row">
+                <div class="add-student-input-block phone-block">
+                    <label for="add-phone">Student Phone Number</label>
+                    <input type="text" id="add-phone" placeholder="Enter Phone Number" maxlength="10" required>
+                </div>
+
+                <div class="add-student-actions">
+                    <button type="button" class="btn secondary-btn" id="add-student-cancel">Cancel</button>
+                    <button type="submit" class="btn primary-btn" id="add-student-btn">Add Student</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

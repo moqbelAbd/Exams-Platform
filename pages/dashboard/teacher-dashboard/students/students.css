@@ -1,0 +1,135 @@
+@import url("/styles/main.css");
+
+
+#add-student-container {
+    background-color: var(--card-background);
+    padding: var(--spacing-2xl);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+    max-width: 650px; /* Made smaller */
+    margin: var(--spacing-3xl) auto;
+    font-family: var(--primary-font);
+    box-sizing: border-box;
+}
+
+.add-student-heading {
+    color: var(--text-primary);
+    font-size: var(--heading2-font-size);
+    font-weight: var(--semi-bold-font-weight);
+    margin-bottom: var(--spacing-xl);
+}
+
+.add-student-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+}
+
+.add-student-input-block {
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+}
+
+label {
+    color: var(--text-primary);
+    font-size: var(--text-sm);
+    font-weight: var(--medium-font-weight);
+    margin-bottom: var(--spacing-sm);
+}
+
+input[type="text"] {
+    width: 100%;
+    box-sizing: border-box; 
+    padding: var(--spacing-md);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-base);
+    font-family: var(--primary-font);
+    color: var(--text-primary);
+    background-color: var(--white);
+    transition: border var(--transition-base);
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* --- Readonly Inputs & Copy Button Group Fix --- */
+.input-group {
+    display: flex;
+    align-items: stretch; 
+    width: 100%;
+}
+
+.input-group input.readonly-input {
+    flex: 1; 
+    min-width: 0; 
+    width: auto;
+    background-color: var(--background);
+    color: var(--text-secondary);
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    cursor: not-allowed;
+}
+
+.copy-btn {
+    flex-shrink: 0; 
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-left: none;
+    padding: 0 var(--spacing-lg); 
+    border-top-right-radius: var(--radius-sm);
+    border-bottom-right-radius: var(--radius-sm);
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.copy-btn:hover {
+    color: var(--primary);
+    background-color: var(--primary-light);
+}
+
+.bottom-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Matches the top grid perfectly */
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-xl);
+}
+
+.phone-block {
+display: flex;
+    flex-direction: column;}
+
+.add-student-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end; /* Aligns the buttons to the bottom of the phone input */
+    gap: var(--spacing-md);
+}
+
+/* --- Buttons --- */
+
+
+/* --- Responsive adjustments --- */
+@media (max-width: 768px) {
+    .add-student-inputs {
+        grid-template-columns: 1fr;
+    }
+    
+    .bottom-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .add-student-actions {
+        justify-content: flex-end;
+    }
+}
