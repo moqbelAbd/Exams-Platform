@@ -19,13 +19,13 @@ export function initializeStorage() {
                 rightAnswer: ["yes"],
                 mark: 10,
                 }
-                
+
     if (!localStorage.getItem(USERS_KEY)) {
         const defaultUsers = [
             {
+                nationalId: "123456789",
                 fullName: "System Admin",
                 PhoneNumber: "0700000000",
-                nationalId: "123456789",
                 username: "teacher123",
                 password: "123",
                 role: "Teacher"
@@ -38,7 +38,7 @@ export function initializeStorage() {
 
 
         
-        localStorage.setItem(USERS_KEY, JSON.stringify(firstQuestion));
+        localStorage.setItem(QUESTIONS_KEY, JSON.stringify(firstQuestion));
     }
 
     if (!localStorage.getItem(EXAMS_KEY)) {
