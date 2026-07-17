@@ -34,7 +34,7 @@ if (isSignedIn) {
 
     dashboardLink = `
         <li class="nav-item">
-            <a class="nav-link" href=dashboardPage>
+            <a class="nav-link" href="${dashboardPage}>
                 Dashboard
             </a>
         </li>
