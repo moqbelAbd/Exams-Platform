@@ -1,3 +1,6 @@
+import { UserRole } from "./models/userRole";
+import { isTeacher } from "./auth";
+
 export function loadHeader() {
     const header = document.getElementById("page-header");
     
@@ -14,7 +17,7 @@ export function loadHeader() {
         studentDashboard: "/pages/dashboard/student-dashboard/student-dashboard.html"
     };
 
-    const dashboardPage = role === "Teacher" ? pages.teacherDashboard : pages.studentDashboard;
+    const dashboardPage = isTeacher ? pages.teacherDashboard : pages.studentDashboard;
 
     let dashboardLink = "";
     let profileButton = "";
