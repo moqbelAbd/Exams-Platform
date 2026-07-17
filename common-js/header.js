@@ -1,5 +1,5 @@
-import { UserRole } from "./models/userRole";
-import { isTeacher } from "./auth";
+import { UserRole } from "./models/userRole.js";
+import { isTeacher } from "./auth.js";
 
 export function loadHeader() {
     const header = document.getElementById("page-header");
