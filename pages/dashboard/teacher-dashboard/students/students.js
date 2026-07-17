@@ -76,7 +76,7 @@ form.addEventListener("submit", (e) => {
     };
 
     users.push(newStudent);
-    saveUsers(users);
+    saveStudent(users);
 
     alert("Student successfully added!");
     form.reset(); 
