@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="signIn.css">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <script src="signIn.js" defer></script>
+<script type="module" src="/common-js/main.js" defer></script>
+    <script type="module" src="signIn.js" defer></script>
     <title>examtracjer</title>
 </head>
 <body>
@@ -36,12 +37,12 @@
 
             <div class="content">
                 <label >Username</label>
-                <input type="text" id="username" placeholder="Enter your username">
+                <input type="text" id="username-input" placeholder="Enter your username">
 
                 <label>Password</label>
-                <input type="password" id="password" placeholder="Enter your password">
+                <input type="password" id="password-input" placeholder="Enter your password">
             </div>
-                <button class="btn">Sign In</button>
+                <button class="btn brimary-btn" id="sign-in-btn">Sign In</button>
             </form>
         </div>    
     </div>
