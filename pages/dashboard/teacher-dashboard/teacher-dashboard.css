@@ -1,2 +1,118 @@
 @import url("../../../styles/main.css");
 
+
+main{
+    padding : 2rem 1.5rem;
+
+}
+
+h1{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secondary);
+}
+
+h1 + p{
+    margin-top: 2px;
+    font-size: 0.875rem;
+
+    color: var(--text-secondary);
+}
+
+.cards-container{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: calc(0.25rem * 4);
+    margin-bottom: 1.5rem;
+}
+
+.card{
+    padding: 1rem;
+    background-color: white;
+    border: 1px solid var(--border);
+    border-radius: 0.375rem;
+}
+
+.icon-bg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 2.25rem;
+    height: 2.25rem;
+    margin-bottom: 0.75rem;
+
+    background-color: #eff6ff;
+    border-radius: 6px;
+}
+
+.card .card-icon{
+    width: 1rem;
+    height: 1rem;
+}
+
+.card .students-icon{
+    color: #155dfb;
+}
+
+.card .card-counter{
+    font-size: 1.5rem;
+    color: var(--secondary);
+    font-weight: bold;
+}
+
+.card .card-title{
+    font-size: 0.75rem;
+    margin-top: 2px;
+
+    color: var(--text-secondary);
+}
+
+
+
+.card .students-icon{
+    color: #155dfb;
+}
+
+.card .exams-icon{
+    color: #00a63e;
+}
+
+.card .attempts-icon{
+    color: #f54a00;
+}
+
+.card .pass-icon{
+    color: #9810fa;
+}
+
+main .tabs{
+    display: flex;
+    gap: 0.25rem;
+    width: fit-content;
+    padding: 0.25rem;
+    margin-bottom: 1.5rem;
+    
+    background-color: #F1F5F9;
+    border-radius: 0.375rem;
+}
+
+main .tabs button{
+    padding-block: 0.375rem;
+    padding-inline: 1rem;
+
+
+    background-color: white;
+    border-radius: 0.25rem;
+    border: none;
+    
+}
+
+main .tabs button .active{
+    font-size: 0.875rem;
+    color: var(--secondary);
+    font-weight: var(--medium-font-weight);
+
+}
+
+
