@@ -37,6 +37,8 @@
 
 --border: #CBD5E1;
 
+--white: #FFFFFF;
+
 --primary-font: "Inter" , sans-serif;
 
 --heading1-font-size: 2.25rem;
@@ -53,8 +55,35 @@
 
 --semi-bold-font-weight: 600;
 --medium-font-weight: 500;
+--normal-font-weight: 400;
+--bold-font-weight: 700;
 
+--text-xs: 0.75rem;
+--text-sm: 0.875rem;
+--text-base: 1rem;
+--text-lg: 1.125rem;
+--text-xl: 1.25rem;
+--text-2xl: 1.75rem;
+--text-3xl: 2.25rem;
+
+--spacing-sm: 0.5rem;
+--spacing-md: 0.75rem;
+--spacing-lg: 1rem;
+--spacing-xl: 1.5rem;
+--spacing-2xl: 2rem;
+--spacing-3xl: 3rem;
+
+
+--radius-sm: 6px;
+--radius-md: 10px;
+--radius-lg: 14px;
+--radius-full: 999px;
+
+--shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+--shadow-md: 0 4px 10px rgba(15, 23, 42, 0.08);
+--shadow-lg: 0 10px 25px rgba(15, 23, 42, 0.12);
+
+--transition-base: 0.2s ease;
+--z-header: 100;
 
 }
-
-
