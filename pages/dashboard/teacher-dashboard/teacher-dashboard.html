@@ -12,7 +12,10 @@
     <script type="module" src="/common-js/main.js" defer></script>
 
     <link rel="stylesheet" href="teacher-dashboard.css">
+    <link rel="stylesheet" href="add-student/add-student.css">
     <script src="teacher-dashboard.js" defer></script>
+    <script type="module" src="add-student/add-student.js" defer></script>
+    
 </head>
 <body>
     <header id="page-header"></header>
@@ -65,10 +68,16 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" placeholder="Search exams...">
             </div>
-            <button class="add-btn">
+            <button class="add-btn" id="add-exam-btn">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus w-4 h-4" data-fg-d3bl269="0.8:66.2977:node_modules/lucide-react:791:15:36588:28:e:Plus::::::ISW" data-fgid-d3bl269=":r5k:"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
                  <span>Add Exam</span>
             </button>
+
+         <button class="add-btn" id="add-student-btn" >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus w-4 h-4" data-fg-d3bl269="0.8:66.2977:node_modules/lucide-react:791:15:36588:28:e:Plus::::::ISW" data-fgid-d3bl269=":r5k:"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+            <span>Add Student</span>
+         </button>
+
         </div>
 
         <div class="exams-table table-container">
@@ -141,6 +150,60 @@
         </div>
 
         <div class="students-table table-container inactive-table">
+
+            
+<div class="add-student-wrapper" id="add-student-container">
+        <h3 class="add-student-heading">Add Student</h3>
+
+        <form id="add-student-form">
+
+            <div class="add-student-inputs">
+                <div class="add-student-input-block">
+                    <label for="add-fullname">Student Full Name</label>
+                    <input type="text" id="add-fullname" placeholder="Enter Full Name" required>
+                </div>
+
+                <div class="add-student-input-block">
+                    <label for="add-national-id">National ID</label>
+                    <input type="text" id="add-national-id" placeholder="Enter National ID" required>
+                </div>
+
+                <div class="add-student-input-block">
+                    <label for="add-username">User Name</label>
+                    <div class="input-group">
+                        <input type="text" id="add-username" class="readonly-input" placeholder="Auto-generated" readonly>
+                        <button class="copy-btn" type="button" data-target="add-username">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="add-student-input-block">
+                    <label for="add-password">User Password</label>
+                    <div class="input-group">
+                        <input type="text" id="add-password" class="readonly-input" placeholder="Auto-generated" readonly>
+                        <button class="copy-btn" type="button" data-target="add-password">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-row">
+                <div class="add-student-input-block phone-block">
+                    <label for="add-phone">Student Phone Number</label>
+                    <input type="text" id="add-phone" placeholder="Enter Phone Number" maxlength="10" required>
+                </div>
+
+                <div class="add-student-actions">
+                    <button type="button" class="btn secondary-btn" id="add-student-cancel">Cancel</button>
+                    <button type="submit" class="btn primary-btn" id="add-student-confirm">Add Student</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
             <table>
                 <thead>
                     <th>Full Name</th>

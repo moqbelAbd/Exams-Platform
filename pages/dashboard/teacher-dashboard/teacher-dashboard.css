@@ -169,6 +169,9 @@ main .add-btn{
 
 }
 
+#add-student-btn{
+    display: none;
+}
 
 main .add-btn svg{
     display: block;
