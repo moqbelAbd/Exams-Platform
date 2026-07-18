@@ -38,6 +38,10 @@ button{
     font-family: inherit;
 }
 
+select {
+    font-family: var(--primary-font);
+}
+
 .container{
     padding:40px 0;
     margin:40px
@@ -80,3 +84,4 @@ section{
 .secondary-btn:hover {
     background-color: var(--border);
 }
+

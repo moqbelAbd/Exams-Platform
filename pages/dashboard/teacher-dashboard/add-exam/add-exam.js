@@ -1,3 +1,7 @@
+import { QuestionType } from "../../../../common-js/models/questionType.js";
+import { ExamStatus } from "../../../../common-js/models/examStatus.js";
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const queContainer = document.querySelector('.que-container');
     const addQuestionBtn = document.getElementById('add-question-btn');
@@ -11,10 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
     addQuestionBtn.innerHTML = `<i class="fa-solid fa-plus"></i> Add Question`;
 
     const QUESTION_TYPES = {
-        mcq: 'Multiple Choice (MCQ)',
-        truefalse: 'True / False',
-        multiselect: 'Multiple Select',
-        short: 'Short Answer (Number)'
+        [QuestionType.MCQ]: 'Multiple Choice (MCQ)',
+        [QuestionType.TRUE_FALSE]: 'True / False',
+        [QuestionType.MULTIPLE]: 'Multiple Select',
+        [QuestionType.SHORT]: 'Short Answer (Number)'
     };
 
 
@@ -28,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function dynamicAreaMarkup(type) {
-        if (type === 'mcq') {
+        if (type === QuestionType.MCQ) {
             return `
                 <div class="options-group" data-role="options">
 
@@ -45,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         }
 
-        if (type === 'truefalse') {
+        if (type === QuestionType.TRUE_FALSE) {
             return `
                 <div class="answer-group" data-role="answer">
                     <label>Correct Answer</label>
@@ -58,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         }
 
-        if (type === 'multiselect') {
+        if (type === QuestionType.MULTIPLE) {
             return `
                 <div class="options-group" data-role="options">
                     <label>Options</label>
@@ -78,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         }
 
-        if (type === 'short') {
+        if (type === QuestionType.SHORT) {
             return `
                 <div class="answer-group" data-role="answer">
                     <label>Correct Answer</label>
@@ -132,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
 
             <div class="question-dynamic-area">
-                ${dynamicAreaMarkup('mcq')}
+                ${dynamicAreaMarkup(QuestionType.MCQ)}
             </div>
         `;
 
@@ -206,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const question = { type, text, mark };
 
-            if (type === 'mcq') {
+            if (type === QuestionType.MCQ) {
                 const options = Array.from(card.querySelectorAll('.option-input')).map(i => i.value.trim());
                 const correct = card.querySelector('.correct-answer-select').value;
 
@@ -223,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 question.correctAnswer = Number(correct);
             }
 
-            if (type === 'truefalse') {
+            if (type === QuestionType.TRUE_FALSE) {
                 const correct = card.querySelector('.correct-answer-select').value;
                 if (!correct) {
                     alert('Please select True or False for each True/False question.');
@@ -232,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 question.correctAnswer = correct === 'true';
             }
 
-            if (type === 'multiselect') {
+            if (type === QuestionType.MULTIPLE) {
                 const options = Array.from(card.querySelectorAll('.option-input')).map(i => i.value.trim());
                 const correct = Array.from(card.querySelectorAll('.correct-answer-checkbox:checked'))
                     .map(c => Number(c.value));
@@ -250,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 question.correctAnswers = correct;
             }
 
-            if (type === 'short') {
+            if (type === QuestionType.SHORT) {
                 const raw = card.querySelector('.correct-answer-number').value;
                 if (raw === '') {
                     alert('Please enter a numeric answer for each short answer question.');
@@ -266,13 +270,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     saveBtn.addEventListener('click', () => {
-        const exam = collectExamData();
-        if (!exam) return;
+        const examData = collectExamData();
+        if (!examData) return;
+
+        const exam = {
+            examId: "EXAM-" + Date.now(), // Creates a unique ID based on the current timestamp
+            status: ExamStatus.ACTIVE,
+            ...examData // Spreads the title and questions we collected
+        };
 
         let exams = JSON.parse(localStorage.getItem("exams")) || [];
         exams.push(exam);
         localStorage.setItem("exams", JSON.stringify(exams));
 
+        window.location.href = "/pages/dashboard/teacher-dashboard/teacher-dashboard.html";
         alert("Exam saved successfully!");
     });
 
