@@ -105,7 +105,7 @@ function addDataToTable(element,dataArr) {
                         <td>${dataArr[1]}</td>
                         <td>${dataArr[2]}</td>
                         <td>
-                            <button class="attempt_btn btn">
+                            <button class="attempt_btn btn" onclick="redirectToAttemptExamPage('${dataArr[0]}')" >
                                 <i class="fa-solid fa-chevron-right"></i> Attempt
                             </button>
                         </td>
@@ -121,7 +121,7 @@ function addDataToTable(element,dataArr) {
                         <td>${dataArr[3]}</td>
                         <td><span class = "result-status fail">${dataArr[4]}</span></td>
                         <td>
-                            <button class="review-btn btn">
+                            <button class="review-btn btn" onclick="redirectToAttemptExamPage('${dataArr[0]}')">
                                 <svg viewBox="0 0 24 24" fill="none">
                                     <g clip-path="url(#clip0_15_200)">
                                     <circle cx="12" cy="13" r="2" stroke="currentColor" stroke-linejoin="round"/>
@@ -140,6 +140,13 @@ function addDataToTable(element,dataArr) {
     
 }
 
+window.redirectToAttemptExamPage = (title) => {
+    window.location.href = `./attempt-exam/attempt-exam.html?title=${title}`;
+}
+
+window.redirectToReviewExamPage = (title) => {
+    window.location.href = `./exam-review/exam-review.html?title=${title}`;
+}
 
 function triggerSearchInput() {
     searchInput.value = "";

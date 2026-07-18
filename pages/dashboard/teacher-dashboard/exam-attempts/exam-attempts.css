@@ -1,0 +1,83 @@
+@import url("/styles/main.css");
+
+
+main{
+    padding : 2rem 1.5rem;
+    margin-inline: auto;
+    max-width: 80rem;
+
+}
+
+h1{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secondary);
+}
+
+h1 + p{
+    margin-top: 2px;
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+
+    color: var(--text-secondary);
+}
+
+.cards-container{
+    display: flex;
+    align-items: center;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: calc(0.25rem * 4);
+    margin-bottom: 1.25rem;
+}
+
+.card{
+    padding: 1rem;
+    text-align: center;
+    padding-block: 0.8rem;
+    padding-inline: 1rem;
+    background-color: white;
+    border: 1px solid var(--border);
+    border-radius: 0.375rem;
+}
+
+
+.card .card-counter{
+    margin-bottom: 0.25rem;
+    line-height: 1;
+    font-size: 1.5rem;
+    color: var(--secondary);
+    font-weight: bold;
+}
+
+.card .card-title{
+    font-size: 0.75rem;
+    margin-top: 0;
+
+    color: var(--text-secondary);
+}
+
+.card .passed{
+    color: #00a63e;
+}
+
+.result-status{
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.125rem 0.625rem;
+  border-radius: 4px;
+  
+}
+
+td .result-status.pass{
+  border: 1px solid #B9F8CF;
+  background-color: #F0FDF4;
+  color: #008236;
+}
+
+td .result-status.fail{
+    border: 1px solid #f8b9cf;
+  background-color: #F0FDF4;
+  color: rgb(130, 0, 54);
+}
+
+
