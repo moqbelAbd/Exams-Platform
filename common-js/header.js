@@ -40,7 +40,7 @@ export function loadHeader() {
     let authButton = "";
 
     if (isSignedIn) {
-        dashboardLink = `<a href="${teacher-dashboard}">Dashboard</a>`;
+        dashboardLink = `<a href="${dashboardPage}">Dashboard</a>`;
         profileLink = `<a href="#" id="profile-btn">Profile</a>`;
         authButton = `
             <button class="logout-btn" id="logout-btn">
@@ -54,7 +54,7 @@ export function loadHeader() {
     header.innerHTML = `
         <div class="header-content">
             <a href="${pages.home}" class="logo">
-                <img src="${basePath}assets/codeExam Logo.png" height="36" width="36" alt="Logo">
+                <img src="/assets/codeExam Logo.png" height="36" width="36" alt="Logo">
                 <span>ExamTrack</span>
             </a>
             <nav>
