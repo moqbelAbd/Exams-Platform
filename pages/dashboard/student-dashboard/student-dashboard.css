@@ -56,6 +56,8 @@ h1 + p{
 
 
 .card .card-counter{
+    margin-bottom: 0.25rem;
+    line-height: 1;
     font-size: 1.5rem;
     color: var(--secondary);
     font-weight: bold;
@@ -63,7 +65,7 @@ h1 + p{
 
 .card .card-title{
     font-size: 0.75rem;
-    margin-top: 2px;
+    margin-top: 0;
 
     color: var(--text-secondary);
 }
@@ -181,11 +183,8 @@ main .add-btn svg{
 
 /* TABLE */
 
-.available-table{
-    display: block;
-}
 
-.history-table{
+.inactive-table{
     display: none;
 }
 

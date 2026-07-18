@@ -80,6 +80,11 @@ form.addEventListener("submit", (e) => {
 
     alert("Student successfully added!");
     form.reset(); 
+
+    const searchInput = document.querySelector(".searchbox > input");
+    searchInput.value = "";
+    const event = new Event('input');
+    searchInput.dispatchEvent(event);
 });
 
 cancelBtn.addEventListener("click", () => {
