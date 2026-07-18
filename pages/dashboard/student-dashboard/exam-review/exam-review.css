@@ -1,0 +1,248 @@
+.exam-review-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 24px 80px;
+}
+
+/* ===== Page header bar (back arrow + title) ===== */
+.page-header-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: background var(--transition-base);
+}
+
+.back-btn:hover {
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+.page-header-bar h1 {
+    font-size: var(--heading2-font-size);
+    font-weight: var(--bold-font-weight);
+    color: var(--text-primary);
+}
+
+.page-header-bar p {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+}
+
+/* ===== Final grade summary card ===== */
+.grade-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    margin-bottom: 24px;
+}
+
+.grade-summary.pass {
+    background: var(--success-light);
+    border-color: #B9F8CF;
+}
+
+.grade-summary.fail {
+    background: var(--danger-light);
+    border-color: #FFC9C9;
+}
+
+.grade-summary-label {
+    font-size: var(--text-xs);
+    font-weight: var(--semi-bold-font-weight);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+}
+
+.grade-summary-score {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.grade-summary-score .score-main {
+    font-size: 2rem;
+    font-weight: var(--bold-font-weight);
+}
+
+.grade-summary.pass .score-main {
+    color: var(--success);
+}
+
+.grade-summary.fail .score-main {
+    color: var(--danger);
+}
+
+.grade-summary-score .score-total {
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+}
+
+.grade-summary-right {
+    text-align: right;
+}
+
+.grade-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: var(--radius-sm);
+    font-size: var(--text-xs);
+    font-weight: var(--semi-bold-font-weight);
+    letter-spacing: 0.03em;
+    margin-bottom: 6px;
+}
+
+.grade-badge.pass {
+    background: var(--card-background);
+    border: 1px solid #B9F8CF;
+    color: var(--success);
+}
+
+.grade-badge.fail {
+    background: var(--card-background);
+    border: 1px solid #FFC9C9;
+    color: var(--danger);
+}
+
+.grade-summary-percent {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+}
+
+/* ===== Question review cards ===== */
+.review-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.review-card {
+    background: var(--card-background);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+}
+
+.review-card.correct {
+    border-color: #B9F8CF;
+    background: #F6FEF9;
+}
+
+.review-card.incorrect {
+    border-color: #FFC9C9;
+    background: #FEF6F6;
+}
+
+.review-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.review-status-line {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--text-xs);
+    font-weight: var(--semi-bold-font-weight);
+    width: fit-content;
+}
+
+.status-badge.correct {
+    color: var(--success);
+}
+
+.status-badge.incorrect {
+    color: var(--danger);
+}
+
+.status-badge i {
+    font-size: var(--text-xs);
+}
+
+.question-text {
+    font-size: var(--text-base);
+    font-weight: var(--semi-bold-font-weight);
+    color: var(--text-primary);
+}
+
+.score-pill {
+    flex-shrink: 0;
+    background: var(--background);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: var(--text-xs);
+    font-weight: var(--semi-bold-font-weight);
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+}
+
+.your-answer-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding-left: 12px;
+    border-left: 2px solid var(--border);
+}
+
+.your-answer-label {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    flex-shrink: 0;
+}
+
+.your-answer-value {
+    font-size: var(--text-sm);
+    font-weight: var(--medium-font-weight);
+}
+
+.review-card.correct .your-answer-value {
+    color: var(--success);
+}
+
+.review-card.incorrect .your-answer-value {
+    color: var(--danger);
+}
+
+.correct-answer-value {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    margin-top: 4px;
+    padding-left: 12px;
+    border-left: 2px solid var(--border);
+}
+
+.correct-answer-value strong {
+    color: var(--success);
+    font-weight: var(--medium-font-weight);
+}
+

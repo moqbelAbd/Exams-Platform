@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/styles/variables.css">
+    <link rel="stylesheet" href="/styles/header.css">
+    <link rel="stylesheet" href="exam-review.css">
+
+    <script type="module" src="/common-js/main.js" defer></script>
+    <script src="exam-review.js" defer></script>
+
+    <title>Exam Review</title>
+</head>
+<body>
+    <header id="page-header"></header>
+    <main class="exam-review-page">
+        <div class="page-header-bar">
+            <button class="back-btn" id="back-btn">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <div>
+                <h1 id="exam-title">Exam Title</h1>
+                <p id="exam-subtitle">Answer Review</p>
+            </div>
+        </div>
+
+        <div class="grade-summary" id="grade-summary"></div>
+
+        <div class="review-list" id="review-list"></div>
+    </main>
+    <div id="user-profile"></div>
+</body>
+</html>
