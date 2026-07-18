@@ -7,7 +7,6 @@ export function loadHeader() {
     const isSignedIn = auth?.isSignedIn || false;
     const role = auth?.userRole || "";
 
-    // basePath is ONLY for assets (images, CSS), NOT for page navigation
     const path = window.location.pathname;
 
     // Prevent unauthenticated users from accessing any dashboard
@@ -48,7 +47,6 @@ export function loadHeader() {
     }
 
 
-    // Use absolute paths (leading /) — works from any page depth
     const pages = {
         home: "/pages/homepage/homepage.html",
         login: "/pages/signIn/signIn.html",
@@ -62,7 +60,10 @@ export function loadHeader() {
     let authButton = "";
 
     if (isSignedIn) {
-        dashboardLink = `<a href="${dashboardPage}">Dashboard</a>`;
+        
+        if(role == UserRole.TEACHER) dashboardLink = `<a href="${pages.teacherDashboard}">Dashboard</a>`;
+        else dashboardLink = `<a href="${pages.teacherDashboard}">Dashboard</a>`;
+
         profileLink = `<a href="#" id="profile-btn">Profile</a>`;
         authButton = `
             <button class="logout-btn" id="logout-btn">

@@ -5,26 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="signIn.css">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-<script type="module" src="/common-js/main.js" defer></script>
+    <script type="module" src="/common-js/main.js" defer></script>
     <script type="module" src="signIn.js" defer></script>
     <title>Sign in</title>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo"> 
-                <img src="\assets\codeExam Logo.png" alt="logo">
-            </div>
-            <div class="nav-link">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Content</a></li>
 
-                <button class="signIn-btn">Sign In</button>
-            </div>
-
-        </nav>
-    </header>
+        <header id="page-header">  </header>
 
     <div class="container">
         <div class="card">
@@ -36,10 +23,10 @@
             <p>Access your ExamTrack account</p>
 
             <div class="content">
-                <label >Username</label>
+                <label for="username-input">Username</label>
                 <input type="text" id="username-input" placeholder="Enter your username">
 
-                <label>Password</label>
+                <label for="password-input">Password</label>
                 <input type="password" id="password-input" placeholder="Enter your password">
             </div>
                 <button class="btn brimary-btn" id="sign-in-btn">Sign In</button>
