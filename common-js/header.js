@@ -1,188 +1,87 @@
 export function loadHeader() {
     const header = document.getElementById("page-header");
+    if (!header) return;
+
+    // Detect how deep we are and set base path
+    const path = window.location.pathname;
+    let basePath = "";
     
-    if (!header) return; 
+    if (path.includes("/pages/dashboard/teacher-dashboard/add-exam/")) {
+        basePath = "../../../../";
+    } else if (path.includes("/pages/dashboard/teacher-dashboard/")) {
+        basePath = "../../../";
+    } else if (path.includes("/pages/dashboard/")) {
+        basePath = "../../";
+    } else if (path.includes("/pages/")) {
+        basePath = "../";
+    } else {
+        basePath = "./";
+    }
 
     const auth = JSON.parse(sessionStorage.getItem("auth"));
     const isSignedIn = auth?.isSignedIn || false;
     const role = auth?.userRole || "";
 
     const pages = {
-        home: "/pages/homepage/homepage.html",
-        login: "/pages/signIn/signIn.html",
-        teacherDashboard: "/pages/dashboard/teacher-dashboard/teacher-dashboard.html",
-        studentDashboard: "/pages/dashboard/student-dashboard/student-dashboard.html"
+        home: basePath + "pages/homepage/homepage.html",
+        login: basePath + "pages/signIn/signIn.html",
+        teacherDashboard: basePath + "pages/dashboard/teacher-dashboard/teacher-dashboard.html",
+        studentDashboard: basePath + "pages/dashboard/student-dashboard/student-dashboard.html"
     };
 
-const dashboardPage =
-    role === "Teacher"
-        ? pages.teacherDashboard
-        : pages.studentDashboard;
+    const dashboardPage = role === "Teacher" ? pages.teacherDashboard : pages.studentDashboard;
 
+    let dashboardLink = "";
+    let profileLink = "";
+    let authButton = "";
 
-let dashboardLink = "";
-let profileButton = "";
-let authButton = "";
-
-if (isSignedIn) {
-
-    dashboardLink = `
-        <li class="nav-item">
-            <a class="nav-link" href="${dashboardPage}>
-                Dashboard
-            </a>
-        </li>
-    `;
-
-    profileButton = `
-        <li class="nav-item">
-            <button
-                id="profile-btn"
-                class="nav-link btn border-0 bg-transparent">
-
-                Profile
-
+    if (isSignedIn) {
+        dashboardLink = `<a href="${dashboardPage}">Dashboard</a>`;
+        profileLink = `<a href="#" id="profile-btn">Profile</a>`;
+        authButton = `
+            <button class="logout-btn" id="logout-btn">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out
             </button>
-        </li>
-    `;
+        `;
+    } else {
+        authButton = `<a href="${pages.login}" class="btn-signup">Sign In</a>`;
+    }
 
-    authButton = `
-        <button
-            id="logout-btn"
-            class="btn btn-outline-danger">
-
-            Sign Out
-
-        </button>
-    `;
-
-}
-else{
-
-    authButton = `
-        <a
-            href="${pages.login}"
-            class="btn btn-primary">
-
-            Sign In
-
-        </a>
-    `;
-
-}
-
-header.innerHTML = `
-
-<nav class="navbar navbar-expand-lg bg-white shadow-sm fixed-top">
-
-    <div class="container">
-
-        <a>
-
-            <img class="navbar-brand"
-                src="/assets/codeExam Logo.png"
-                height="38px"
-                width="38px"
-                alt="Logo">
-
-        </a>
-
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbar">
-
-            <span class="navbar-toggler-icon"></span>
-
-        </button>
-
-        <div
-            class="collapse navbar-collapse justify-content-center"
-            id="navbar">
-
-            <ul class="navbar-nav">
-
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="${pages.home}">
-
-                        Home
-
-                    </a>
-
-                </li>
-
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="homepage.html#about-section">
-
-                        About
-
-                    </a>
-
-                </li>
-
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="homepage.html#contact-section">
-
-                        Contact
-
-                    </a>
-
-                </li>
-
+    header.innerHTML = `
+        <div class="header-content">
+            <a href="${pages.home}" class="logo">
+                <img src="${basePath}assets/codeExam Logo.png" height="36" width="36" alt="Logo">
+                <span>ExamTrack</span>
+            </a>
+            <nav>
+                <a href="${pages.home}">Home</a>
+                <a href="${pages.home}#about-section">About</a>
+                <a href="${pages.home}#contact-section">Contact</a>
                 ${dashboardLink}
-
-                ${profileButton}
-
-            </ul>
-
+                ${profileLink}
+            </nav>
+            <div class="auth-buttons">
+                ${authButton}
+            </div>
         </div>
+    `;
 
-        ${authButton}
+    const profileBtn = document.getElementById("profile-btn");
+    if (profileBtn) {
+        profileBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const profilePanel = document.getElementById("user-profile");
+            if (profilePanel) {
+                profilePanel.style.display = profilePanel.style.display === "block" ? "none" : "block";
+            }
+        });
+    }
 
-    </div>
-
-</nav>
-
-`;
-
-
-const profileBtn = document.getElementById("profile-btn");
-
-if(profileBtn){
-
-    profileBtn.addEventListener("click", ()=>{
-
-        document
-            .getElementById("user-profile")
-            .style.display = "block";
-
-    });
-
-
-    
-}
     const logoutBtn = document.getElementById("logout-btn");
-
-if(logoutBtn){
-
-    logoutBtn.onclick = () => {
-
-        sessionStorage.removeItem("auth");
-
-        location.href = "homepage.html";
-
-    };
-
-}
-
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", () => {
+            sessionStorage.removeItem("auth");
+            location.href = pages.home;
+        });
+    }
 }
