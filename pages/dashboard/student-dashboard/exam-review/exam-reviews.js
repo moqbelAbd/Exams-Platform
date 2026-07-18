@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.history.back();
     });
 
-    const ATTEMPTS_STORAGE_KEY = 'examAttempts'; // localStorage key holding an array of attempts
+    const ATTEMPTS_STORAGE_KEY = 'examAttempts'; 
     const PASS_THRESHOLD = 50; // percent required to pass
 
     function getAttemptId() {
@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gradeSummaryEl.innerHTML = '';
         reviewListEl.innerHTML = `<p class="review-state-msg error">${escapeHtml(message)}</p>`;
     }
+
 
     function loadExamReview() {
         const attemptId = getAttemptId();

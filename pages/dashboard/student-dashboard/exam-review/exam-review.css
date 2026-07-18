@@ -246,28 +246,3 @@
     font-weight: var(--medium-font-weight);
 }
 
-.review-state-msg {
-    text-align: center;
-    padding: 40px 20px;
-    color: var(--text-secondary);
-    font-size: var(--text-sm);
-}
-
-.review-state-msg.error {
-    color: var(--danger);
-}
-
-@media (max-width: 600px) {
-    .grade-summary {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-    }
-    .grade-summary-right {
-        text-align: left;
-    }
-    .review-card-top {
-        flex-direction: column;
-        gap: 8px;
-    }
-}
