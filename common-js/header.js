@@ -40,7 +40,7 @@ export function loadHeader() {
     let authButton = "";
 
     if (isSignedIn) {
-        dashboardLink = `<a href="${dashboardPage}">Dashboard</a>`;
+        dashboardLink = `<a href="${teacher-dashboard}">Dashboard</a>`;
         profileLink = `<a href="#" id="profile-btn">Profile</a>`;
         authButton = `
             <button class="logout-btn" id="logout-btn">
