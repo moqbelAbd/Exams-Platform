@@ -164,7 +164,7 @@ function renderAnswerInput(question) {
             questions: studentAnswers, // Included for compatibility with your existing exam-review.js
             grade: totalScored,
             success: success,
-            attemptTimestamp: Date.now()
+            attemptTimestamp: new Date().toLocaleString()
         };
 
       // 5. Save to Local Storage

@@ -199,72 +199,80 @@ document.addEventListener('DOMContentLoaded', () => {
         const questions = [];
 
         for (const card of cards) {
-            const type = card.querySelector('.question-type').value;
-            const text = card.querySelector('.question-text').value.trim();
-            const mark = Number(card.querySelector('.question-mark').value);
+        const type = card.querySelector('.question-type').value;
+        const text = card.querySelector('.question-text').value.trim();
+        const mark = Number(card.querySelector('.question-mark').value);
 
-            if (!text) {
-                alert('Please fill in the question text for every question.');
+        if (!text) {
+            alert('Please fill in the question text for every question.');
+            return null;
+        }
+
+        // 1. ADD THIS: Generate a unique ID for the question
+        const question = { 
+            id: 'Q-' + Date.now() + '-' + Math.floor(Math.random() * 10000),
+            type, text, mark 
+        };
+
+        if (type === QuestionType.MCQ) {
+            const options = Array.from(card.querySelectorAll('.option-input')).map(i => i.value.trim());
+            const correct = card.querySelector('.correct-answer-select').value; // returns '1', '2', '3', '4'
+
+            if (options.some(o => !o)) {
+                alert('Please fill in all 4 options.');
+                return null;
+            }
+            if (!correct) {
+                alert('Please select the correct answer for each MCQ question.');
                 return null;
             }
 
-            const question = { type, text, mark };
-
-            if (type === QuestionType.MCQ) {
-                const options = Array.from(card.querySelectorAll('.option-input')).map(i => i.value.trim());
-                const correct = card.querySelector('.correct-answer-select').value;
-
-                if (options.some(o => !o)) {
-                    alert('Please fill in all 4 options.');
-                    return null;
-                }
-                if (!correct) {
-                    alert('Please select the correct answer for each MCQ question.');
-                    return null;
-                }
-
-                question.options = options;
-                question.correctAnswer = Number(correct);
-            }
-
-            if (type === QuestionType.TRUE_FALSE) {
-                const correct = card.querySelector('.correct-answer-select').value;
-                if (!correct) {
-                    alert('Please select True or False for each True/False question.');
-                    return null;
-                }
-                question.correctAnswer = correct === 'true';
-            }
-
-            if (type === QuestionType.MULTIPLE) {
-                const options = Array.from(card.querySelectorAll('.option-input')).map(i => i.value.trim());
-                const correct = Array.from(card.querySelectorAll('.correct-answer-checkbox:checked'))
-                    .map(c => Number(c.value));
-
-                if (options.some(o => !o)) {
-                    alert('Please fill in all 4 options.');
-                    return null;
-                }
-                if (correct.length === 0) {
-                    alert('Please select at least one correct answer for each multiple select question.');
-                    return null;
-                }
-
-                question.options = options;
-                question.correctAnswers = correct;
-            }
-
-            if (type === QuestionType.SHORT) {
-                const raw = card.querySelector('.correct-answer-number').value;
-                if (raw === '') {
-                    alert('Please enter a numeric answer for each short answer question.');
-                    return null;
-                }
-                question.correctAnswer = Number(raw);
-            }
-
-            questions.push(question);
+            question.options = options;
+            // 2.   Save the actual text of the option, not the index number
+            question.correctAnswer = options[Number(correct) - 1];
         }
+
+        if (type === QuestionType.TRUE_FALSE) {
+            const correct = card.querySelector('.correct-answer-select').value;
+            if (!correct) {
+                alert('Please select True or False for each True/False question.');
+                return null;
+            }
+            // 3.   Save the exact string "True" or "False"
+            question.correctAnswer = correct === 'true' ? 'True' : 'False';
+        }
+
+        if (type === QuestionType.MULTIPLE) {
+            const options = Array.from(card.querySelectorAll('.option-input')).map(i => i.value.trim());
+            const correct = Array.from(card.querySelectorAll('.correct-answer-checkbox:checked'))
+                .map(c => Number(c.value));
+
+            if (options.some(o => !o)) {
+                alert('Please fill in all 4 options.');
+                return null;
+            }
+            if (correct.length === 0) {
+                alert('Please select at least one correct answer for each multiple select question.');
+                return null;
+            }
+
+            question.options = options;
+            // 4.   Map indexes to actual text arrays, and name the key "correctAnswer" (Singular) to match grading
+            question.correctAnswer = correct.map(index => options[index - 1]);
+        }
+
+        if (type === QuestionType.SHORT) {
+            const raw = card.querySelector('.correct-answer-number').value;
+            if (raw === '') {
+                alert('Please enter a numeric answer for each short answer question.');
+                return null;
+            }
+            // Keep as string to ensure exact text matching later
+            question.correctAnswer = raw.trim(); 
+        }
+
+        questions.push(question);
+    }
 
         return { title, questions };
     }
