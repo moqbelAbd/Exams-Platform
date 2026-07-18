@@ -1,12 +1,18 @@
 import { getUsers } from "../../common-js/storage.js";
 import { UserRole } from "../../common-js/models/userRole.js";
+import { isTeacher } from "../../common-js/auth.js";
 
 const AUTH_KEY = 'auth';
 
 const pages = {
     home: "/pages/homepage/homepage.html",
-    dashboard: "/pages/dashboard/dashboard.html",
-};
+
+        teacherDashboard: "/pages/dashboard/teacher-dashboard/teacher-dashboard.html",
+        studentDashboard: "/pages/dashboard/student-dashboard/student-dashboard.html"
+    };
+
+        const dashboardPage = isTeacher ? pages.teacherDashboard : pages.studentDashboard;
+    
 
 let signInBtn=document.getElementById("sign-in-btn")
 let usernameInput=document.getElementById("username-input")
@@ -41,7 +47,7 @@ export function login(username, password) {
             console.log("Welcome Student");
         }
         
-             window.location.href = pages.dashboard; 
+             window.location.href = dashboardPage; 
 
         return true;
     }

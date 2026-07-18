@@ -4,9 +4,231 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teacher Dashboard</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="/common-js/main.js" defer></script>
+
     <link rel="stylesheet" href="teacher-dashboard.css">
+    <link rel="stylesheet" href="add-student/add-student.css">
+    <script src="teacher-dashboard.js" defer></script>
+    <script type="module" src="add-student/add-student.js" defer></script>
+    
 </head>
 <body>
-    
+    <header id="page-header"></header>
+
+    <div id="user-profile"></div>
+
+    <main>
+        <h1>Teacher Dashboard</h1>
+        <p>Manage exams and students</p>
+
+        <div class="cards-container">
+            <div class="card">
+                <div class="icon-bg">
+                <svg class="students-icon card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users w-4 h-4 text-blue-600" data-fg-d3bl258="0.8:66.2977:/src/app/App.tsx:772:15:35817:43:e:s.icon" data-fgid-d3bl258=":r3n:"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
+                <p class="card-counter">3</p>
+                <p class="card-title">Total Students</p>
+            </div>
+            <div class="card">
+                <div class="icon-bg">
+                    <svg class="exams-icon card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text w-4 h-4 text-green-600" data-fg-d3bl258="0.8:66.2977:/src/app/App.tsx:772:15:35817:43:e:s.icon" data-fgid-d3bl258=":r3s:"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
+                </div>
+                <p class="card-counter">2</p>
+                <p class="card-title">Active Exams</p>
+            </div>
+            <div class="card">
+                <div class="icon-bg">
+                    <svg class="attempts-icon card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-no-axes-column w-4 h-4 text-orange-600" data-fg-d3bl258="0.8:66.2977:/src/app/App.tsx:772:15:35817:43:e:s.icon" data-fgid-d3bl258=":r41:"><line x1="18" x2="18" y1="20" y2="10"></line><line x1="12" x2="12" y1="20" y2="4"></line><line x1="6" x2="6" y1="20" y2="14"></line></svg>
+                </div>
+                <p class="card-counter">2</p>
+                <p class="card-title">Total Attempts</p>
+            </div>
+            <div class="card">
+                <div class="icon-bg">
+                    <svg class="pass-icon card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award w-4 h-4 text-purple-600" data-fg-d3bl258="0.8:66.2977:/src/app/App.tsx:772:15:35817:43:e:s.icon" data-fgid-d3bl258=":r46:"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path><circle cx="12" cy="8" r="6"></circle></svg>
+                </div>
+                <p class="card-counter">100%</p>
+                <p class="card-title">Pass Rate</p>
+            </div>
+            
+        </div>
+
+        <div class="tabs">
+            <button class="exams-tab active-tab">Exams</button>
+            <button class="students-tab inactive-tab">Students</button>
+        </div>
+
+        <div class="searchbox-container">
+            <div class="searchbox">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search exams...">
+            </div>
+            <button class="add-btn" id="add-exam-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus w-4 h-4" data-fg-d3bl269="0.8:66.2977:node_modules/lucide-react:791:15:36588:28:e:Plus::::::ISW" data-fgid-d3bl269=":r5k:"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+                 <span>Add Exam</span>
+            </button>
+
+         <button class="add-btn" id="add-student-btn" >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus w-4 h-4" data-fg-d3bl269="0.8:66.2977:node_modules/lucide-react:791:15:36588:28:e:Plus::::::ISW" data-fgid-d3bl269=":r5k:"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+            <span>Add Student</span>
+         </button>
+
+        </div>
+
+        <div class="exams-table table-container">
+            <table>
+                <thead>
+                    <th>Title</th>
+                    <th>Questions</th>
+                    <th>TOTAL GRADE</th>
+                    <th>STATUS</th>
+                    <th>ACTIONS</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        <td class="title-data">JavaScript Fundamentals</td>
+                        <td>5</td>
+                        <td>40</td>
+                        <td><span class = "exam-status active">Active</span></td>
+
+                        <td>
+                            <button class="exam-set_active btn">Set Inactive</button>
+                        </td>
+                        <td>
+                            <button class="attempts_btn btn">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <g clip-path="url(#clip0_15_200)">
+                                    <circle cx="12" cy="13" r="2" stroke="currentColor" stroke-linejoin="round"/>
+                                    <path d="M12 7.5C7.69517 7.5 4.47617 11.0833 3.39473 12.4653C3.14595 12.7832 3.14595 13.2168 3.39473 13.5347C4.47617 14.9167 7.69517 18.5 12 18.5C16.3048 18.5 19.5238 14.9167 20.6053 13.5347C20.8541 13.2168 20.8541 12.7832 20.6053 12.4653C19.5238 11.0833 16.3048 7.5 12 7.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </g>
+                                    <defs>
+                                    <clipPath id="clip0_15_200">
+                                    <rect width="24" height="24" fill="white"/>
+                                    </clipPath>
+                                    </defs>
+                                </svg>
+                                <span>Attempts (1)</span>
+                            </button>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="title-data">JavaScript Fundamentals</td>
+                        <td>5</td>
+                        <td>40</td>
+                        <td><span class = "exam-status inactive">Inactive</span></td>
+
+                        <td>
+                            <button class="exam-set_active btn">Set Active</button>
+                        </td>
+                        <td>
+                            <button class="attempts_btn btn">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <g clip-path="url(#clip0_15_200)">
+                                    <circle cx="12" cy="13" r="2" stroke="currentColor" stroke-linejoin="round"/>
+                                    <path d="M12 7.5C7.69517 7.5 4.47617 11.0833 3.39473 12.4653C3.14595 12.7832 3.14595 13.2168 3.39473 13.5347C4.47617 14.9167 7.69517 18.5 12 18.5C16.3048 18.5 19.5238 14.9167 20.6053 13.5347C20.8541 13.2168 20.8541 12.7832 20.6053 12.4653C19.5238 11.0833 16.3048 7.5 12 7.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </g>
+                                    <defs>
+                                    <clipPath id="clip0_15_200">
+                                    <rect width="24" height="24" fill="white"/>
+                                    </clipPath>
+                                    </defs>
+                                </svg>
+                                <span>Attempts (1)</span>
+                            </button>
+                            
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="students-table table-container inactive-table">
+
+            
+<div class="add-student-wrapper" id="add-student-container">
+        <h3 class="add-student-heading">Add Student</h3>
+
+        <form id="add-student-form">
+
+            <div class="add-student-inputs">
+                <div class="add-student-input-block">
+                    <label for="add-fullname">Student Full Name</label>
+                    <input type="text" id="add-fullname" placeholder="Enter Full Name" required>
+                </div>
+
+                <div class="add-student-input-block">
+                    <label for="add-national-id">National ID</label>
+                    <input type="text" id="add-national-id" placeholder="Enter National ID" required>
+                </div>
+
+                <div class="add-student-input-block">
+                    <label for="add-username">User Name</label>
+                    <div class="input-group">
+                        <input type="text" id="add-username" class="readonly-input" placeholder="Auto-generated" readonly>
+                        <button class="copy-btn" type="button" data-target="add-username">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="add-student-input-block">
+                    <label for="add-password">User Password</label>
+                    <div class="input-group">
+                        <input type="text" id="add-password" class="readonly-input" placeholder="Auto-generated" readonly>
+                        <button class="copy-btn" type="button" data-target="add-password">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-row">
+                <div class="add-student-input-block phone-block">
+                    <label for="add-phone">Student Phone Number</label>
+                    <input type="text" id="add-phone" placeholder="Enter Phone Number" maxlength="10" required>
+                </div>
+
+                <div class="add-student-actions">
+                    <button type="button" class="btn secondary-btn" id="add-student-cancel">Cancel</button>
+                    <button type="submit" class="btn primary-btn" id="add-student-confirm">Add Student</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+            <table>
+                <thead>
+                    <th>Full Name</th>
+                    <th>Username</th>
+                    <th>National ID</th>
+                    <th>Actions</th>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        <td class="title-data">Ahmad Ali</td>
+                        <td>@ahmed123</td>
+                        <td>S-200001</td>
+                        <td>
+                            <button class="delete_btn btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2 w-3 h-3" data-fg-d3bl369="0.8:66.2977:node_modules/lucide-react:913:25:42998:30:e:Trash2::::::c98" data-fgid-d3bl369=":rq9:"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><line x1="10" x2="10" y1="11" y2="17"></line><line x1="14" x2="14" y1="11" y2="17"></line></svg>
+                                <span>Delete</span>
+                            </button>
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
 </body>
 </html>
+
