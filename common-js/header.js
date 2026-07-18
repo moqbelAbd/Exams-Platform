@@ -1,19 +1,45 @@
 import { UserRole } from "./models/userRole.js";
-import { isTeacher } from "./auth.js";
+// import { isTeacher } from "./auth.js";
 
 export function loadHeader() {
-    const header = document.getElementById("page-header");
-    if (!header) return;
+
+    const auth = JSON.parse(sessionStorage.getItem("auth"));
+    const isSignedIn = auth?.isSignedIn || false;
+    const role = auth?.userRole || "";
 
     // basePath is ONLY for assets (images, CSS), NOT for page navigation
     const path = window.location.pathname;
+
+    // Prevent unauthenticated users from accessing any dashboard
+    if (path.includes("/pages/dashboard/") && !isSignedIn) {
+        window.location.href = pages.login;
+        return; // Stop execution
+    }
+
+    // Prevent students from accessing the teacher dashboard
+    if (path.includes("teacher-dashboard") && role !== UserRole.TEACHER) {
+        window.location.href = pages.studentDashboard;
+        return;
+    }
+
+    // Prevent teachers from accessing the student dashboard (optional, but recommended)
+    if (path.includes("student-dashboard") && role === UserRole.TEACHER) {
+        window.location.href = pages.teacherDashboard;
+        return;
+    }
+    
+        const header = document.getElementById("page-header");
+        if (!header) return;
+
     let basePath = "";
     
     if (path.includes("/pages/dashboard/teacher-dashboard/add-exam/")) {
         basePath = "../../../../";
     } else if (path.includes("/pages/dashboard/teacher-dashboard/")) {
         basePath = "../../../";
-    } else if (path.includes("/pages/dashboard/")) {
+    } else if (path.includes("/pages/dashboard/student-dashboard/")) {
+        basePath = "../../../";
+    }  else if (path.includes("/pages/dashboard/")) {
         basePath = "../../";
     } else if (path.includes("/pages/")) {
         basePath = "../";
@@ -21,9 +47,6 @@ export function loadHeader() {
         basePath = "./";
     }
 
-    const auth = JSON.parse(sessionStorage.getItem("auth"));
-    const isSignedIn = auth?.isSignedIn || false;
-    const role = auth?.userRole || "";
 
     // Use absolute paths (leading /) — works from any page depth
     const pages = {
@@ -33,7 +56,6 @@ export function loadHeader() {
         studentDashboard: "/pages/dashboard/student-dashboard/student-dashboard.html"
     };
 
-    const dashboardPage = isTeacher ? pages.teacherDashboard : pages.studentDashboard;
 
     let dashboardLink = "";
     let profileLink = "";
@@ -54,7 +76,7 @@ export function loadHeader() {
     header.innerHTML = `
         <div class="header-content">
             <a href="${pages.home}" class="logo">
-                <img src="${basePath}assets/codeExam Logo.png" height="36" width="36" alt="Logo">
+                <img src="/assets/codeExam Logo.png" height="36" width="36" alt="Logo">
                 <span>ExamTrack</span>
             </a>
             <nav>

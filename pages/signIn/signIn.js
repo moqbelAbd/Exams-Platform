@@ -10,8 +10,6 @@ const pages = {
         teacherDashboard: "/pages/dashboard/teacher-dashboard/teacher-dashboard.html",
         studentDashboard: "/pages/dashboard/student-dashboard/student-dashboard.html"
     };
-
-        const dashboardPage = isTeacher ? pages.teacherDashboard : pages.studentDashboard;
     
 
 let signInBtn=document.getElementById("sign-in-btn")
@@ -47,8 +45,13 @@ export function login(username, password) {
             console.log("Welcome Student");
         }
         
-             window.location.href = dashboardPage; 
-
+    if(user.role === UserRole.TEACHER){
+            console.log("Welcome Teacher");
+            window.location.href = pages.teacherDashboard; 
+        } else {
+            console.log("Welcome Student");
+            window.location.href = pages.studentDashboard; 
+        }
         return true;
     }
     
