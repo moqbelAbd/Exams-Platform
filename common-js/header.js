@@ -5,7 +5,7 @@ export function loadHeader() {
     const header = document.getElementById("page-header");
     if (!header) return;
 
-    // Detect how deep we are and set base path
+    // basePath is ONLY for assets (images, CSS), NOT for page navigation
     const path = window.location.pathname;
     let basePath = "";
     
@@ -25,11 +25,12 @@ export function loadHeader() {
     const isSignedIn = auth?.isSignedIn || false;
     const role = auth?.userRole || "";
 
+    // Use absolute paths (leading /) — works from any page depth
     const pages = {
-        home: basePath + "pages/homepage/homepage.html",
-        login: basePath + "pages/signIn/signIn.html",
-        teacherDashboard: basePath + "pages/dashboard/teacher-dashboard/teacher-dashboard.html",
-        studentDashboard: basePath + "pages/dashboard/student-dashboard/student-dashboard.html"
+        home: "/pages/homepage/homepage.html",
+        login: "/pages/signIn/signIn.html",
+        teacherDashboard: "/pages/dashboard/teacher-dashboard/teacher-dashboard.html",
+        studentDashboard: "/pages/dashboard/student-dashboard/student-dashboard.html"
     };
 
     const dashboardPage = isTeacher ? pages.teacherDashboard : pages.studentDashboard;
