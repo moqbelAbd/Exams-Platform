@@ -87,6 +87,14 @@ body{
     width: 100%;
 }
 
+#page-header nav a.active {
+    color: var(--primary);
+    font-weight: var(--semi-bold-font-weight);
+}
+
+#page-header nav a.active::after {
+    width: 100%;
+}
 
 #page-header .auth-buttons {
     display: flex;
