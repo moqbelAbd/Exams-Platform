@@ -136,11 +136,11 @@ main .searchbox{
     border-radius: 4px;
 }
 
-main .searchbox svg{
+main .searchbox .fa-magnifying-glass{
     position: absolute;
-    width: 1rem;
-    height: 1rem;
-    transform:  translate(50%,50%);
+    font-size: 1rem;
+    top: 50%;
+    transform:  translate(50%,-50%);
 
     color: var(--text-secondary);
 }
@@ -181,11 +181,8 @@ main .add-btn svg{
 
 /* TABLE */
 
-.exams-table{
-    display: block;
-}
 
-.students-table{
+.inactive-table{
     display: none;
 }
 
