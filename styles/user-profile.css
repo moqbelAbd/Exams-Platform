@@ -10,22 +10,30 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(15, 23, 42, 0.4); /* Dark translucent overlay using --secondary color base */
+    background-color: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(1.2px); /* Creates the background blur */
     -webkit-backdrop-filter: blur(2px);
     z-index: 1050; /* Ensures it sits above the Bootstrap fixed-top navbar */
-    overflow-y: auto;
-}
+    justify-content: center;
+    align-items: center;}
 
 /* The White Modal Box */
 #user-profile .profile-modal-content {
     position: relative;
+    justify-self: center;
+    margin-top: 2rem;
     width: 90%;
     max-width: 400px;
-    margin: 5rem auto; /* Centers it horizontally, adds top margin */
     background-color: var(--card-background);
     border-radius: 8px;
     border: 1px solid var(--border);
+    width: 90%;
+    max-width: 450px; /* Prevents it from getting too wide on large screens */
+    background-color: white;
+    
+    /* If the screen is very small, this allows the inside of the modal to scroll */
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 /* Avatar Circle */
