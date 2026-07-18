@@ -58,8 +58,6 @@ tabs.addEventListener("click",function(event) {
 const searchInput = document.querySelector(".searchbox > input");
 
 
-
-
 searchInput.addEventListener("input",function() {
     exams = JSON.parse(localStorage.getItem("exams"));
 
@@ -137,15 +135,14 @@ function addDataToTable(element,dataArr) {
                         </td>
                     </tr>`
     }
-    
 }
 
-window.redirectToAttemptExamPage = (id) => {
-    window.location.href = `./attempt-exam/attempt-exam.html?id=${id}`;
+window.redirectToAttemptExamPage = (examId) => {
+    window.location.href = `./attempt-exam/attempt-exam.html?examId=${examId}`;
 }
 
-window.redirectToReviewExamPage = (id) => {
-    window.location.href = `./exam-review/exam-review.html?title=${id}`;
+window.redirectToReviewExamPage = (examId) => {
+    window.location.href = `./exam-review/exam-review.html?examId=${examId}`;
 }
 
 function triggerSearchInput() {

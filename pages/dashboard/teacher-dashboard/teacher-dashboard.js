@@ -8,7 +8,16 @@ const searchInput = document.querySelector(".searchbox > input");
 const addStudentContainer = document.getElementById("add-student-container");
 
 let users = JSON.parse(localStorage.getItem("users")) || [];
+let exams = JSON.parse(localStorage.getItem("exams")) || [];
+
 let activeTab = 0; // 0: exams, 1: students
+
+
+
+
+document.querySelector(".total_students").textContent = users.filter(user=>user.role.toLowerCase === "student").length;
+document.querySelector(".active_exams").textContent = exams.filter(exam=>exam.status.toLowerCase === "active").length;
+
 
 // Reload search
 const triggerSearch = () => searchInput.dispatchEvent(new Event("input"));
@@ -45,8 +54,8 @@ const getExamRow = (exam) => `
     <tr>
         <td class="title-data">${exam.title}</td>
         <td>${exam.questions.length}</td>
-        <td>0</td>
-        <td><span class="exam-status active">active</span></td>
+        <td>${exam.questions.reduce((acc, val) => acc + val, 0)}</td>
+        <td><span class="exam-status ${exam.status.toLowerCase()}">${exam.status.toLowerCase()}</span></td>
         <td><button class="exam-set_active btn">Set Inactive</button></td>
         <td>
             <button class="attempts_btn btn" onclick="redirectToAttemptsPage('${exam.title}')">
@@ -100,3 +109,5 @@ window.redirectToAttemptsPage = (title) => {
 
 // Initial Load
 triggerSearch();
+
+
