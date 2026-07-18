@@ -6,7 +6,6 @@
     padding: 32px 24px 80px;
 }
 
-/* ===== Page header bar (back arrow + title) ===== */
 .page-header-bar {
     display: flex;
     align-items: center;
@@ -242,7 +241,8 @@ select.form-input {
 /* ===== Save / Cancel actions ===== */
 .action {
     display: flex;
-    gap: 12px;
+    gap: 18px;
+    justify-self: center;
 }
 
 .btn-save,
