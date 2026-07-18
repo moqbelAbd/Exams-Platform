@@ -12,6 +12,7 @@
   <script type="module" src="/common-js/main.js" defer></script>
 
   <link rel="stylesheet" href="student-dashboard.css">
+  <script src="student-dashboard.js" defer></script>
 
 </head>
 <body>
@@ -21,7 +22,7 @@
 
     <main>
         <h1>Student Dashboard</h1>
-        <p>Welcome back, (full name)</p>
+        <p>Welcome back, <span class="student_name"></span></p>
 
         <div class="cards-container">
             <div class="card">
@@ -68,7 +69,7 @@
             
         </div>
 
-        <div class="available-table .table-container">
+        <div class="available-table table-container">
             <table>
                 <thead>
                     <th>Title</th>
@@ -93,7 +94,7 @@
             </table>
         </div>
 
-        <div class="history-table .table-container">
+        <div class="history-table table-container inactive-table">
             <table>
                 <thead>
                     <th>Full Name</th>
@@ -116,7 +117,6 @@
                 </tbody>
             </table>
         </div>
-
     </main>
 
 </body>
