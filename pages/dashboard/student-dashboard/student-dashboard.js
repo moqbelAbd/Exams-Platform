@@ -73,7 +73,7 @@ searchInput.addEventListener("input",function() {
             if (exam.title.toLowerCase().startsWith(value)) {
                     let totalGrade = 0;
                     exam.questions.forEach(question => totalGrade += question.mark);
-                    addDataToTable(tbody,[exam.title,exam.questions.length,totalGrade]);
+                    addDataToTable(tbody,[exam.title,exam.questions.length,totalGrade,exam.examId]);
             }
         });
     }
@@ -87,7 +87,7 @@ searchInput.addEventListener("input",function() {
             if (exam.title.toLowerCase().startsWith(value)) {
                     let totalGrade = 0;
                     exam.questions.forEach(question => totalGrade += question.mark);
-                    addDataToTable(tbody,[exam.title,exam.questions.length,totalGrade,0,"Fail"]);
+                    addDataToTable(tbody,[exam.title,exam.questions.length,totalGrade,0,"Fail",exam.examId]);
             }
         });
     }
@@ -105,7 +105,7 @@ function addDataToTable(element,dataArr) {
                         <td>${dataArr[1]}</td>
                         <td>${dataArr[2]}</td>
                         <td>
-                            <button class="attempt_btn btn">
+                            <button class="attempt_btn btn" onclick="redirectToAttemptExamPage('${dataArr[3]}')" >
                                 <i class="fa-solid fa-chevron-right"></i> Attempt
                             </button>
                         </td>
@@ -121,7 +121,7 @@ function addDataToTable(element,dataArr) {
                         <td>${dataArr[3]}</td>
                         <td><span class = "result-status fail">${dataArr[4]}</span></td>
                         <td>
-                            <button class="review-btn btn">
+                            <button class="review-btn btn" onclick="redirectToAttemptExamPage('${dataArr[5]}')">
                                 <svg viewBox="0 0 24 24" fill="none">
                                     <g clip-path="url(#clip0_15_200)">
                                     <circle cx="12" cy="13" r="2" stroke="currentColor" stroke-linejoin="round"/>
@@ -140,6 +140,13 @@ function addDataToTable(element,dataArr) {
     
 }
 
+window.redirectToAttemptExamPage = (id) => {
+    window.location.href = `./attempt-exam/attempt-exam.html?id=${id}`;
+}
+
+window.redirectToReviewExamPage = (id) => {
+    window.location.href = `./exam-review/exam-review.html?title=${id}`;
+}
 
 function triggerSearchInput() {
     searchInput.value = "";
