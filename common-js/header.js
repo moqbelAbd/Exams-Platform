@@ -9,6 +9,13 @@ export function loadHeader() {
 
     const path = window.location.pathname;
 
+        const pages = {
+        home: "/pages/homepage/homepage.html",
+        login: "/pages/signIn/signIn.html",
+        teacherDashboard: "/pages/dashboard/teacher-dashboard/teacher-dashboard.html",
+        studentDashboard: "/pages/dashboard/student-dashboard/student-dashboard.html"
+    };
+    
     // Prevent unauthenticated users from accessing any dashboard
     if (path.includes("/pages/dashboard/") && !isSignedIn) {
         window.location.href = pages.login;
@@ -45,14 +52,6 @@ export function loadHeader() {
     } else {
         basePath = "./";
     }
-
-
-    const pages = {
-        home: "/pages/homepage/homepage.html",
-        login: "/pages/signIn/signIn.html",
-        teacherDashboard: "/pages/dashboard/teacher-dashboard/teacher-dashboard.html",
-        studentDashboard: "/pages/dashboard/student-dashboard/student-dashboard.html"
-    };
 
 
     let dashboardLink = "";

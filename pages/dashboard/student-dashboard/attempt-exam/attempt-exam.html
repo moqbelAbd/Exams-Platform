@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attempt Exam</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="attempt-exam.css">
+    <link rel="stylesheet" href="/pages/dashboard/teacher-dashboard/add-exam/add-exam.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script type="module" src="/common-js/main.js" defer></script>
+    <script type="module" src="attempt-exam.js" defer></script>
+</head>
+<body>
+    <header id="page-header"></header>
+    <div id="user-profile"></div>
+
+    <main class="container" id="attempt-exam-container">
+        <div class="attempt-exam-header">
+            <div class="attempt-exam-header-left">
+                <h3 id="attempt-exam-title">Loading Exam...</h3>
+                <p id="exam-questions-quantity"></p>
+            </div>
+            <span class="attempt-exam-total-mark" id="attempt-exam-total-mark"></span>
+        </div>
+
+        <form id="attempt-exam-form">
+            
+            <div id="questions-wrapper"></div>
+
+            <span class="attempt-exam-actions mt-4 d-block">
+                <button type="submit" class="btn btn-primary">Submit Exam</button>
+            </span>
+        </form>
+    </main>
+
+    
+    <div id="feedback-overlay" class="d-none">
+        <div id="feedback-card" class="text-center p-5 rounded shadow-lg bg-white">
+            <div id="feedback-icon" class="display-1 mb-3"></div>
+            <h2 id="feedback-title" class="mb-3 fw-bold"></h2>
+            <p id="feedback-message" class="lead mb-4"></p>
+            <button id="feedback-continue-btn" class="btn btn-lg px-5"></button>
+        </div>
+    </div>
+
+</body>
+</html>
