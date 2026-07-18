@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function getAttemptId() {
         const params = new URLSearchParams(window.location.search);
-        return params.get('attemptId') || params.get('id');
+        return params.get('attemptId');
     }
 
     function getAllAttempts() {
