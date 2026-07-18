@@ -1,6 +1,7 @@
 import { getUsers, saveStudent } from "../../../../common-js/storage.js";
 import { isTeacher } from "../../../../common-js/auth.js";
 import { UserRole } from "../../../../common-js/models/userRole.js";
+import { showToast } from "../../../../common-js/toast.js";
 
 // DOM Elements
 const form = document.getElementById("add-student-form");
@@ -55,14 +56,14 @@ form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     if (!isTeacher()) {
-        alert("Unauthorized Action: Only teachers can add new students.");
+        showToast("Unauthorized Action: Only teachers can add new students.", "error");
         return;
     }
 
     const users = getUsers();
     const exists = users.find(u => u.nationalId === nationalIdInput.value);
     if (exists) {
-        alert("Error: A student with this National ID already exists.");
+        showToast("Error: A student with this National ID already exists.", "error");
         return;
     }
 
@@ -78,7 +79,7 @@ form.addEventListener("submit", (e) => {
     users.push(newStudent);
     saveStudent(users);
 
-    alert("Student successfully added!");
+    showToast("Student successfully added!", "success");
     form.reset(); 
 
     const searchInput = document.querySelector(".searchbox > input");

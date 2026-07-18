@@ -1,5 +1,6 @@
 import { QuestionType } from "../../../../common-js/models/questionType.js";
 import { ExamStatus } from "../../../../common-js/models/examStatus.js";
+import { showToast } from "../../../../common-js/toast.js";
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -187,12 +188,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const cards = Array.from(queContainer.querySelectorAll('.question-card'));
 
         if (!title) {
-            alert('Please enter an exam title.');
+            showToast('Please enter an exam title.', 'error');
             return null;
         }
 
         if (cards.length === 0) {
-            alert('Please add at least one question.');
+            showToast('Please add at least one question.', 'error');
             return null;
         }
 
@@ -204,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const mark = Number(card.querySelector('.question-mark').value);
 
             if (!text) {
-                alert('Please fill in the question text for every question.');
+                showToast('Please fill in the question text for every question.', 'error');
                 return null;
             }
 
@@ -215,11 +216,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const correct = card.querySelector('.correct-answer-select').value;
 
                 if (options.some(o => !o)) {
-                    alert('Please fill in all 4 options.');
+                    showToast('Please fill in all 4 options.', 'error');
                     return null;
                 }
                 if (!correct) {
-                    alert('Please select the correct answer for each MCQ question.');
+                    showToast('Please select the correct answer for each MCQ question.', 'error');
                     return null;
                 }
 
@@ -230,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (type === QuestionType.TRUE_FALSE) {
                 const correct = card.querySelector('.correct-answer-select').value;
                 if (!correct) {
-                    alert('Please select True or False for each True/False question.');
+                    showToast('Please select True or False for each True/False question.', 'error');
                     return null;
                 }
                 question.correctAnswer = correct === 'true';
@@ -242,11 +243,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     .map(c => Number(c.value));
 
                 if (options.some(o => !o)) {
-                    alert('Please fill in all 4 options.');
+                    showToast('Please fill in all 4 options.', 'error');
                     return null;
                 }
                 if (correct.length === 0) {
-                    alert('Please select at least one correct answer for each multiple select question.');
+                    showToast('Please select at least one correct answer for each multiple select question.', 'error');
                     return null;
                 }
 
@@ -257,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (type === QuestionType.SHORT) {
                 const raw = card.querySelector('.correct-answer-number').value;
                 if (raw === '') {
-                    alert('Please enter a numeric answer for each short answer question.');
+                    showToast('Please enter a numeric answer for each short answer question.', 'error');
                     return null;
                 }
                 question.correctAnswer = Number(raw);
@@ -284,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem("exams", JSON.stringify(exams));
 
         window.location.href = "/pages/dashboard/teacher-dashboard/teacher-dashboard.html";
-        alert("Exam saved successfully!");
+        showToast("Exam saved successfully!", "success");
     });
 
     // start with one question by default
