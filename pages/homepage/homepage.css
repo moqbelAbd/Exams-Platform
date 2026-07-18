@@ -1,3 +1,7 @@
+@import url("/styles/main.css");
+html {
+    scroll-behavior: smooth;
+}
 @import url("../../styles/main.css");
 
 

@@ -1,164 +1,133 @@
-header {
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    padding-top: 0;
+}
+#page-header {
     background: var(--card-background);
     border-bottom: 1px solid var(--border);
-    padding: 8px 0;
     position: sticky;
     top: 0;
     z-index: var(--z-header);
     box-shadow: var(--shadow-sm);
 }
 
-.header-content {
+#page-header .header-content {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
     max-width: 1400px;
+    height: 56px;
     margin: 0 auto;
-    padding: 0 20px;
-    gap: var(--spacing-sm);
+    padding: 0 24px;
+    gap: 12px;
+    box-sizing: border-box;
 }
 
-.logo {
+
+#page-header .logo {
     display: flex;
     align-items: center;
-    gap: var(--spacing-sm);
-    font-size: var(--text-xl);
+    text-decoration: none;
+    flex-shrink: 0;
+    gap: 10px;
+
+}
+
+
+#page-header .logo img {
+    height: 32px;
+    width: 32px;
+    display: block;
+    border-radius: var(--radius-sm);
+}
+#page-header .logo span {
+    font-size: var(--text-lg);
     font-weight: var(--bold-font-weight);
-    color: var(--primary);
-    text-decoration: none;
-    transition: color var(--transition-base);
-    white-space: nowrap;
-}
-
-.logo:hover {
-    color: var(--primary-hover);
-}
-
-.logo i {
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-}
-
-nav {
-    display: flex;
-    gap: var(--spacing-sm);
-    align-items: center;
-    flex: 1;
-    justify-content: center;
-}
-
-nav a {
     color: var(--text-primary);
-    text-decoration: none;
-    font-size: var(--text-base);
-    font-weight: var(--normal-font-weight);
-    transition: color var(--transition-base);
-    position: relative;
 }
 
-nav a:hover {
+
+#page-header nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: 20px;
+}
+
+#page-header nav a {
+    position: relative;
+    font-size: 14px;
+    line-height: 1;
+    color: var(--text-primary);
+    font-weight: var(--normal-font-weight);
+    text-decoration: none;
+    transition: color var(--transition-base);
+}
+
+#page-header nav a:hover {
     color: var(--primary);
 }
 
-nav a::after {
+#page-header nav a::after {
     content: '';
     position: absolute;
-    bottom: -4px;
     left: 0;
+    bottom: -4px;
     width: 0;
     height: 2px;
     background: var(--primary);
     transition: width var(--transition-base);
 }
 
-nav a:hover::after {
+#page-header nav a:hover::after {
     width: 100%;
 }
 
-.auth-buttons {
+
+#page-header .auth-buttons {
     display: flex;
-    gap: var(--spacing-md);
     align-items: center;
+    gap: 12px;
     white-space: nowrap;
+    flex-shrink: 0;
 }
 
-.btn-login,
-.btn-signup,
-.logout-btn {
-    padding: var(--spacing-sm) var(--spacing-lg);
-    border-radius: var(--radius-md);
-    font-weight: var(--medium-font-weight);
-    font-size: var(--text-sm);
-    cursor: pointer;
-    transition: all var(--transition-base);
-    border: none;
-    display: flex;
+#page-header .btn-signup,
+#page-header .logout-btn {
+    display: inline-flex;
     align-items: center;
-    gap: var(--spacing-sm);
+    gap: 6px;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: var(--semi-bold-font-weight);
+    border: none;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    line-height: 1;
 }
 
-.btn-login {
-    background: var(--card-background);
-    border: 1px solid var(--border);
-    color: var(--text-primary);
-}
-
-.btn-login:hover {
-    background: var(--background);
-    border-color: var(--primary);
-    color: var(--primary);
-}
-
-.btn-signup {
+#page-header .btn-signup {
     background: var(--primary);
     color: var(--white);
 }
 
-.btn-signup:hover {
+#page-header .btn-signup:hover {
     background: var(--primary-hover);
-    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
-    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+    transform: translateY(-1px);
 }
-
-.logout-btn {
+#page-header .logout-btn {
     background: var(--card-background);
     border: 1px solid var(--border);
     color: var(--text-primary);
 }
 
-.logout-btn:hover {
-    background: var(--background);
+#page-header .logout-btn:hover {
     border-color: var(--danger);
     color: var(--danger);
 }
-
-.user-menu {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
-    margin-left: auto;
-}
-
-.user-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: var(--radius-full);
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--white);
-    font-weight: var(--semi-bold-font-weight);
-    cursor: pointer;
-    font-size: var(--text-sm);
-    transition: all var(--transition-base);
-    box-shadow: var(--shadow-md);
-}
-
-.user-avatar:hover {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-lg);
-}
-
-
