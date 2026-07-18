@@ -269,9 +269,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const exam = collectExamData();
         if (!exam) return;
 
-        // TODO: replace with your actual save call (fetch/localStorage/etc.)
-        console.log('Exam to save:', exam);
-        alert('Exam saved! (see console for the data payload)');
+        let exams = JSON.parse(localStorage.getItem("exams")) || [];
+        exams.push(exam);
+        localStorage.setItem("exams", JSON.stringify(exams));
+
+        alert("Exam saved successfully!");
     });
 
     // start with one question by default
