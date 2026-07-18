@@ -212,7 +212,7 @@ td .exam-status.inactive{
 }
 
 td .exam-set_active{
-  border-color: var(--border);
+  border: 1px solid var(--border);
   color: var(--secondary);
   background: none;
 }
