@@ -114,7 +114,7 @@ function addDataToTable(element,dataArr) {
                     <td class="title-data">${dataArr[0]}</td>
                     <td>${dataArr[1]}</td>
                     <td>${dataArr[2]}</td>
-                    <td><span class = "exam-status active">${dataArr[2]}</span></td>
+                    <td><span class = "exam-status active">active</span></td>
 
                     <td>
                         <button class="exam-set_active btn">Set Inactive</button>

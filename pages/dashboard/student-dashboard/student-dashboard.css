@@ -209,4 +209,48 @@ td .attempt_btn:hover{
     background-color: var(--primary-hover);
 }
 
+.result-status{
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.125rem 0.625rem;
+  border-radius: 4px;
+  
+}
 
+td .result-status.pass{
+  border: 1px solid #B9F8CF;
+  background-color: #F0FDF4;
+  color: #008236;
+}
+
+td .result-status.fail{
+    border: 1px solid #f8b9cf;
+  background-color: #F0FDF4;
+  color: rgb(130, 0, 54);
+}
+
+
+td .review-btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+
+  color: var(--secondary);
+  background: none;
+
+  border: 1px solid var(--border);
+}
+
+td .review-btn svg{
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+td .review-btn svg circle, 
+td .review-btn svg path {
+  stroke-width: 2.5px; 
+}
+
+td .review-btn:hover{
+  background-color: rgba(29, 78, 216,0.2);
+}
