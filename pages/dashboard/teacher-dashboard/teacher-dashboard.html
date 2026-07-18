@@ -12,6 +12,7 @@
     <script type="module" src="/common-js/main.js" defer></script>
 
     <link rel="stylesheet" href="teacher-dashboard.css">
+    <script src="teacher-dashboard.js" defer></script>
 </head>
 <body>
     <header id="page-header"></header>
@@ -55,22 +56,22 @@
         </div>
 
         <div class="tabs">
-            <button class="active-tab">Exams</button>
-            <button class="inactive-tab">Students</button>
+            <button class="exams-tab active-tab">Exams</button>
+            <button class="students-tab inactive-tab">Students</button>
         </div>
 
         <div class="searchbox-container">
             <div class="searchbox">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" data-fg-d3bl25="0.8:66.2977:node_modules/lucide-react:250:7:9748:93:e:Search::::::B9rK" data-fgid-d3bl25=":r5g:"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+                <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" placeholder="Search exams...">
             </div>
             <button class="add-btn">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus w-4 h-4" data-fg-d3bl269="0.8:66.2977:node_modules/lucide-react:791:15:36588:28:e:Plus::::::ISW" data-fgid-d3bl269=":r5k:"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
-                 Add Exam
+                 <span>Add Exam</span>
             </button>
         </div>
 
-        <div class="exams-table .table-container">
+        <div class="exams-table table-container">
             <table>
                 <thead>
                     <th>Title</th>
@@ -139,7 +140,7 @@
             </table>
         </div>
 
-        <div class="students-table .table-container">
+        <div class="students-table table-container inactive-table">
             <table>
                 <thead>
                     <th>Full Name</th>
