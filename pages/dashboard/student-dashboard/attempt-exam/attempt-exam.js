@@ -157,7 +157,7 @@ function renderAnswerInput(question) {
         // Build the Final Attempt Object
         const attemptObject = {
             attemptId: `ATT-${Date.now()}`, 
-            userId: currentUser.id,
+            userId: currentUser,
             examId: currentExam.examId,
             examTitle: currentExam.title,
             studentAnswers: studentAnswers,
