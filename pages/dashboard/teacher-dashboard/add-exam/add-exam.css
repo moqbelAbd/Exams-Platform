@@ -245,6 +245,11 @@ select.form-input {
     justify-self: center;
 }
 
+#generate-trivia-btn{
+    background-color: var(--primary-light);
+    border: 1px solid #6366f1;
+}
+
 .btn-save,
 .btn-cancel {
     padding: 10px 24px;
