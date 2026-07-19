@@ -1,129 +1,110 @@
 @import url("../../../styles/main.css");
 
-
-main{
-    padding : 2rem 1.5rem;
+main {
+    padding: 2rem 1.5rem;
     margin-inline: auto;
     max-width: 80rem;
-
 }
 
-h1{
+h1 {
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--secondary);
+    color: var(--text-primary); /* Switched to text-primary to ensure it flips in dark mode */
 }
 
-h1 + p{
+h1 + p {
     margin-top: 2px;
     font-size: 0.875rem;
     margin-bottom: 1.5rem;
-
     color: var(--text-secondary);
 }
 
-.cards-container{
+.cards-container {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: calc(0.25rem * 4);
     margin-bottom: 1.5rem;
 }
 
-.card{
+.card {
     padding: 12px;
-    background-color: white;
+    background-color: var(--card-background); /* No longer hardcoded white */
     border: 1px solid var(--border);
     border-radius: 0.375rem;
 }
 
-.icon-bg{
+.icon-bg {
     display: flex;
     justify-content: center;
     align-items: center;
-
     width: 2.25rem;
     height: 2.25rem;
     margin-bottom: 0.75rem;
-
-    background-color: #eff6ff;
+    background-color: var(--primary-light); /* Will automatically darken in dark mode */
     border-radius: 6px;
 }
 
-.card i{
+.card i {
     font-size: 1rem;
 }
 
-
-
-.card .card-counter{
+.card .card-counter {
     margin-bottom: 0.25rem;
     line-height: 1;
     font-size: 1.5rem;
-    color: var(--secondary);
+    color: var(--text-primary);
     font-weight: bold;
 }
 
-.card .card-title{
+.card .card-title {
     font-size: 0.75rem;
     margin-top: 0;
-
     color: var(--text-secondary);
 }
 
+/* Assigned theme colors instead of hardcoded hex values */
+.card .fa-file-lines { color: var(--primary); }
+.card .fa-circle-check { color: var(--success); }
+.card .fa-award { color: var(--info); }
+.card .fa-chart-simple { color: var(--warning); }
 
-
-.card .fa-file-lines{
-    color: #155dfc;
-}
-
-.card .fa-circle-check{
-    color: #00a63e;
-}
-
-.card .fa-award{
-    color: #9810fa;
-}
-
-.card .fa-chart-simple{
-    color: #f54a00;
-}
-
-main .tabs{
+main .tabs {
     display: flex;
     gap: 0.25rem;
     width: fit-content;
     padding: 0.25rem;
     margin-bottom: 1.5rem;
-    
-    background-color: #F1F5F9;
+    background-color: var(--tabs-bg);   
     border-radius: 0.375rem;
 }
 
-main .tabs button{
+main .tabs button {
     padding-block: 0.375rem;
     padding-inline: 1rem;
     font-size: 0.875rem;
-
     font-weight: var(--medium-font-weight);
     border-radius: 0.25rem;
     border: none;
+    background: transparent;
+    cursor: pointer;
 }
 
-main .tabs .active-tab{
-    background-color: white;
-    color: var(--secondary);
+main .tabs .active-tab {
+    background-color: var(--card-background);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-tab);
+    transition: background-color var(--transition-base), box-shadow var(--transition-base);
 }
 
-main .tabs .inactive-tab{
+main .tabs .inactive-tab {
     color: var(--text-secondary);
 }
 
-main .tabs .inactive-tab:hover{
-    color: var(--secondary);
+main .tabs .inactive-tab:hover {
+    color: var(--text-primary);
 }
 
-
-main .searchbox-container{
+main .searchbox-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -132,29 +113,36 @@ main .searchbox-container{
     margin-bottom: 1rem;
 }
 
-main .searchbox{
+main .searchbox {
     position: relative;
     border: 1px solid var(--border);
     border-radius: 4px;
+    background-color: var(--card-background); /* Ensures the searchbox isn't transparent over the main background */
 }
 
-main .searchbox .fa-magnifying-glass{
+main .searchbox .fa-magnifying-glass {
     position: absolute;
     font-size: 1rem;
     top: 50%;
-    transform:  translate(50%,-50%);
-
+    transform: translate(50%, -50%);
     color: var(--text-secondary);
 }
 
-main .searchbox input{
+main .searchbox input {
     padding-left: 2.25rem;
     padding-right: 0.75rem;
     padding-block: 0.5rem;
     font-size: var(--text-sm);
+    background: transparent;
+    border: none;
+    color: var(--text-primary); /* Ensures typed text is visible in dark mode */
 }
 
-main .add-btn{
+main .searchbox input:focus {
+    outline: none;
+}
+
+main .add-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -162,95 +150,92 @@ main .add-btn{
     font-size: var(--text-sm);
     padding-block: 0.5rem;
     padding-inline: 1rem;
-
     background-color: var(--primary);
     border-radius: 0.25rem;
-    color: white;
+    color: var(--white);
     font-weight: var(--medium-font-weight);
     border: none;
-
+    cursor: pointer;
 }
 
-
-main .add-btn svg{
+main .add-btn svg {
     display: block;
-
     width: 1rem;
     height: 1rem;
 }
 
-
-
 /* TABLE */
 
-
-.inactive-table{
+.inactive-table {
     display: none;
 }
 
-
-td .attempt_btn{
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-
-  color: white;
-  background-color: var(--primary);
-  font-weight: var(--medium-font-weight);
+.table thead th{
+    background-color: var(--card-background) !important; 
 }
 
-td .attempt_btn .fa-chevron-right{
-  font-size: 0.75rem;
+td .attempt_btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: var(--white);
+    background-color: var(--primary);
+    font-weight: var(--medium-font-weight);
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
+td .attempt_btn .fa-chevron-right {
+    font-size: 0.75rem;
+}
 
-td .attempt_btn:hover{
-    color: white;
+td .attempt_btn:hover {
     background-color: var(--primary-hover);
 }
 
-.result-status{
-  display: inline-block;
-  font-size: 0.75rem;
-  padding: 0.125rem 0.625rem;
-  border-radius: 4px;
-  
+.result-status {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 0.125rem 0.625rem;
+    border-radius: 4px;
 }
 
-td .result-status.pass{
-  border: 1px solid #B9F8CF;
-  background-color: #F0FDF4;
-  color: #008236;
+td .result-status.pass {
+    border: 1px solid var(--success);
+    background-color: var(--success-light);
+    color: var(--success);
 }
 
-td .result-status.fail{
-    border: 1px solid #f8b9cf;
-  background-color: #F0FDF4;
-  color: rgb(130, 0, 54);
+td .result-status.fail {
+    border: 1px solid var(--danger);
+    background-color: var(--danger-light); /* Fixed from light green to danger-light */
+    color: var(--danger);
 }
 
-
-td .review-btn{
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-
-  color: var(--secondary);
-  background: none;
-
-  border: 1px solid var(--border);
+td .review-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: var(--text-primary);
+    background: transparent;
+    border: 1px solid var(--border);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-td .review-btn svg{
-  width: 0.75rem;
-  height: 0.75rem;
+td .review-btn svg {
+    width: 0.75rem;
+    height: 0.75rem;
 }
 
 td .review-btn svg circle, 
 td .review-btn svg path {
-  stroke-width: 2.5px; 
+    stroke-width: 2.5px; 
 }
 
-td .review-btn:hover{
-  background-color: rgba(29, 78, 216,0.2);
+td .review-btn:hover {
+    background-color: var(--border); 
 }

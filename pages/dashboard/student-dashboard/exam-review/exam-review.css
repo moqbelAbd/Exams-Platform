@@ -248,3 +248,38 @@
     font-weight: var(--medium-font-weight);
 }
 
+
+/* -----------------------------------
+   Exam Review Page: Dark Mode Styles
+------------------------------------ */
+
+/* Final Grade Summary Card */
+[data-theme="dark"] .grade-summary.pass {
+    background-color: rgba(0, 166, 62, 0.15);
+    border-color: rgba(0, 166, 62, 0.3);
+}
+
+[data-theme="dark"] .grade-summary.fail {
+    background-color: rgba(231, 0, 11, 0.15);
+    border-color: rgba(231, 0, 11, 0.3);
+}
+
+/* Grade Badges */
+[data-theme="dark"] .grade-badge.pass {
+    border-color: rgba(0, 166, 62, 0.3);
+}
+
+[data-theme="dark"] .grade-badge.fail {
+    border-color: rgba(231, 0, 11, 0.3);
+}
+
+/* Question Review Cards */
+[data-theme="dark"] .review-card.correct {
+    background-color: rgba(0, 166, 62, 0.08); /* Very subtle green tint */
+    border-color: rgba(0, 166, 62, 0.3);
+}
+
+[data-theme="dark"] .review-card.incorrect {
+    background-color: rgba(231, 0, 11, 0.08); /* Very subtle red tint */
+    border-color: rgba(231, 0, 11, 0.3);
+}

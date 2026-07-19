@@ -76,8 +76,47 @@ td .result-status.pass{
 
 td .result-status.fail{
     border: 1px solid #f8b9cf;
-  background-color: #F0FDF4;
+  background-color: #fab9a0;
   color: rgb(130, 0, 54);
 }
 
 
+/* -----------------------------------
+   Results Dashboard: Dark Mode Styles
+------------------------------------ */
+
+/* Cards */
+[data-theme="dark"] .card {
+    background-color: var(--card-background); /* Overrides hardcoded white */
+    border-color: var(--border);
+}
+
+/* Passed Text inside Card */
+[data-theme="dark"] .card .passed {
+    color: #4ade80; /* Lighter green for better contrast on dark backgrounds */
+}
+
+/* -----------------------------------
+   Table Result Badges
+------------------------------------ */
+
+[data-theme="dark"] table thead th,
+[data-theme="dark"] .table thead th {
+    background-color: var(--card-background) !important;
+    color: var(--text-secondary) !important;
+    border-bottom: 1px solid var(--border) !important; /* Helps blend the header */
+}
+
+/* Pass Badge */
+[data-theme="dark"] td .result-status.pass {
+    background-color: rgba(0, 166, 62, 0.15); /* Soft, transparent green */
+    border-color: rgba(0, 166, 62, 0.3);
+    color: #4ade80; /* Lighter green text */
+}
+
+/* Fail Badge */
+[data-theme="dark"] td .result-status.fail {
+    background-color: rgba(231, 0, 11, 0.15); /* Soft, transparent red */
+    border-color: rgba(231, 0, 11, 0.3);
+    color: #f87171; /* Lighter red text */
+}
