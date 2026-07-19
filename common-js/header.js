@@ -77,7 +77,7 @@ export function loadHeader() {
         <div class="header-content">
             <a href="${pages.home}" class="logo">
                 <img src="/assets/codeExam Logo.png" height="36" width="36" alt="Logo">
-                <span>ExamTrack</span>
+                <span>CodeExam</span>
             </a>
             <nav>
                 <a href="${pages.home}">Home</a>

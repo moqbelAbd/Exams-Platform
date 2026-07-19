@@ -6,11 +6,11 @@ export function loadProfile() {
     if (!profileContainer) return;
 
     const authString = sessionStorage.getItem("auth");
-    if (!authString) {
-        alert ("Not signed in")
-        window.location.href = "/pages/signIn/signIn.html"
-        return;
-    } 
+    // if (!authString) {
+    //     alert ("Not signed in")
+    //     window.location.href = "/pages/signIn/signIn.html"
+    //     return;
+    // } 
 
     const auth = JSON.parse(authString);
     const users = getUsers();
