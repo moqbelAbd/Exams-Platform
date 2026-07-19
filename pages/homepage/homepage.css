@@ -1,9 +1,10 @@
 @import url("/styles/main.css");
+
+@import url("../../styles/main.css");
+
 html {
     scroll-behavior: smooth;
 }
-@import url("../../styles/main.css");
-
 
 body {
     margin: 0;
