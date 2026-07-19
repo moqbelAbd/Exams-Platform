@@ -5,12 +5,13 @@
 
 // Read from storage
 
-const users = JSON.parse(localStorage.getItem("users"));
+const users = JSON.parse(localStorage.getItem("users")) || [];
 
 const currentCred = JSON.parse(sessionStorage.getItem("auth"));
 
 const currentUser = users.find(user => user.nationalId === currentCred.userId);
 
+// examAttempts
 
 // welcome user by his name 
 
@@ -58,8 +59,13 @@ tabs.addEventListener("click",function(event) {
 const searchInput = document.querySelector(".searchbox > input");
 
 
+
 searchInput.addEventListener("input",function() {
-    exams = JSON.parse(localStorage.getItem("exams"));
+    const exams = JSON.parse(localStorage.getItem("exams")) || [];
+    const examAttempts = JSON.parse(localStorage.getItem("examAttempts")) || {};
+
+    const attempts = examAttempts.filter(attempt => attempt.userId === currentUser.nationalId);
+    
 
      if (activeTab === 0) {
         const tbody = firstTable.querySelector("tbody");
@@ -68,7 +74,7 @@ searchInput.addEventListener("input",function() {
 
         const value = searchInput.value.toLowerCase();
         exams.forEach(exam => {
-            if (exam.title.toLowerCase().startsWith(value)) {
+            if (exam.title.toLowerCase().startsWith(value) && attempts?.find(attempt => attempt?.examId === exam.examId) === undefined ) {
                     let totalGrade = 0;
                     exam.questions.forEach(question => totalGrade += question.mark);
                     addDataToTable(tbody,[exam.title,exam.questions.length,totalGrade,exam.examId]);
@@ -81,11 +87,15 @@ searchInput.addEventListener("input",function() {
         tbody.textContent = "";
 
         const value = searchInput.value.toLowerCase();
-        exams.forEach(exam => {
-            if (exam.title.toLowerCase().startsWith(value)) {
+        attempts?.forEach(attempt => {
+            if (attempt.examTitle.toLowerCase().startsWith(value)) {
                     let totalGrade = 0;
-                    exam.questions.forEach(question => totalGrade += question.mark);
-                    addDataToTable(tbody,[exam.title,exam.questions.length,totalGrade,0,"Fail",exam.examId]);
+                    attempt.questions.forEach(question => totalGrade += question.mark);
+                    addDataToTable(tbody,
+                        [attempt.examTitle,attempt.questions.length,totalGrade,
+                            attempt.grade,
+                            attempt?.success?"Success":"Fail",
+                            attempt?.attemptId]);
             }
         });
     }
@@ -113,13 +123,13 @@ function addDataToTable(element,dataArr) {
     else if (activeTab == 1) { 
         element.innerHTML += 
                 `<tr>
-                        <td class="title-data">${dataArr[0]}</td>
-                        <td>${dataArr[1]}</td>
-                        <td>${dataArr[2]}</td>
-                        <td>${dataArr[3]}</td>
-                        <td><span class = "result-status fail">${dataArr[4]}</span></td>
+                        <td class="title-data">${dataArr[0]??"_"}</td>
+                        <td>${dataArr[1]??"_"}</td>
+                        <td>${dataArr[2]??"_"}</td>
+                        <td>${dataArr[3]??"_"}</td>
+                        <td><span class = "result-status ${dataArr[4] ==="Success"?"pass":"fail"}">${dataArr[4]??"_"}</span></td>
                         <td>
-                            <button class="review-btn btn" onclick="redirectToAttemptExamPage('${dataArr[5]}')">
+                            <button class="review-btn btn" onclick="redirectToReviewExamPage('${dataArr[5]??null}')">
                                 <svg viewBox="0 0 24 24" fill="none">
                                     <g clip-path="url(#clip0_15_200)">
                                     <circle cx="12" cy="13" r="2" stroke="currentColor" stroke-linejoin="round"/>
@@ -141,8 +151,11 @@ window.redirectToAttemptExamPage = (examId) => {
     window.location.href = `./attempt-exam/attempt-exam.html?examId=${examId}`;
 }
 
-window.redirectToReviewExamPage = (examId) => {
-    window.location.href = `./exam-review/exam-review.html?examId=${examId}`;
+window.redirectToReviewExamPage = (attemptId) => {
+    if (attemptId !== null)
+         window.location.href = `./exam-review/exam-review.html?attemptId=${attemptId}`;
+    else
+        console.log("attemptId is null");
 }
 
 function triggerSearchInput() {
