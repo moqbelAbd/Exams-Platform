@@ -15,8 +15,8 @@ let activeTab = 0; // 0: exams, 1: students
 
 
 
-document.querySelector(".total_students").textContent = users.filter(user=>user.role.toLowerCase === "student").length;
-document.querySelector(".active_exams").textContent = exams.filter(exam=>exam.status.toLowerCase === "active").length;
+document.querySelector(".total_students").textContent = users.filter(user=>user.role.toLowerCase() === "student").length ?? "_";
+document.querySelector(".active_exams").textContent = exams.filter(exam=>exam.status.toLowerCase() === "active").length ?? "_";
 
 
 // Reload search
@@ -54,7 +54,7 @@ const getExamRow = (exam) => `
     <tr>
         <td class="title-data">${exam.title}</td>
         <td>${exam.questions.length}</td>
-        <td>${exam.questions.reduce((acc, val) => acc + val, 0)}</td>
+        <td>${exam.questions.reduce((sum, question) => sum + question.mark, 0)}</td>
         <td><span class="exam-status ${exam.status.toLowerCase()}">${exam.status.toLowerCase()}</span></td>
         <td><button class="exam-set_active btn">Set Inactive</button></td>
         <td>

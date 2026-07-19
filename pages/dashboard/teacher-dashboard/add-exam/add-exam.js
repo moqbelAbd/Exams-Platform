@@ -234,7 +234,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     showToast('Please select True or False for each True/False question.', 'error');
                     return null;
                 }
-                question.correctAnswer = correct === 'true';
+                // Save the exact string "True" or "False"
+                question.correctAnswer = correct === 'true' ? 'True' : 'False';
             }
 
             if (type === QuestionType.MULTIPLE) {
@@ -252,7 +253,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 question.options = options;
-                question.correctAnswers = correct;
+                // Map indexes to actual text arrays, and name the key "correctAnswer" (singular) to match grading
+                question.correctAnswer = correct.map(index => options[index - 1]);
             }
 
             if (type === QuestionType.SHORT) {
@@ -261,7 +263,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     showToast('Please enter a numeric answer for each short answer question.', 'error');
                     return null;
                 }
-                question.correctAnswer = Number(raw);
+                // Keep as string to ensure exact text matching later
+                question.correctAnswer = raw.trim();
             }
 
             questions.push(question);
