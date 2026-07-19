@@ -1,7 +1,4 @@
-
-// STILL UNDER WORK
-
-
+import { ExamStatus } from "../../../common-js/models/examStatus.js";
 
 // Read from storage
 
@@ -74,7 +71,7 @@ searchInput.addEventListener("input",function() {
 
         const value = searchInput.value.toLowerCase();
         exams.forEach(exam => {
-            if (exam.title.toLowerCase().startsWith(value) && attempts?.find(attempt => attempt?.examId === exam.examId) === undefined ) {
+            if (exam.title.toLowerCase().startsWith(value) && attempts?.find(attempt => attempt?.examId === exam.examId) === undefined && exam.status != ExamStatus.INACTIVE) {
                     let totalGrade = 0;
                     exam.questions.forEach(question => totalGrade += question.mark);
                     addDataToTable(tbody,[exam.title,exam.questions.length,totalGrade,exam.examId]);
