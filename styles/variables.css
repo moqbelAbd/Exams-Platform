@@ -29,7 +29,7 @@
 --background: #F8FAFC;
 
 --card-background: #FFFFFF;
-
+--shadow-tab: 0 1px 3px rgba(15, 23, 42, 0.1);
 
 --text-primary: #0F172A;
 --text-secondary: #475569;
@@ -38,6 +38,9 @@
 --border: #CBD5E1;
 
 --white: #FFFFFF;
+
+--tabs-bg: #F1F5F9;         
+--table-header-bg: #F8FAFC;
 
 --primary-font: "Inter" , sans-serif;
 
@@ -86,4 +89,26 @@
 --transition-base: 0.2s ease;
 --z-header: 100;
 
+}
+
+[data-theme="dark"] {
+    --primary: #2b6cd4;
+    --primary-light: #1E3A8A;
+    
+    --secondary: #F8FAFC;
+    --secondary-light: #CBD5E1;
+    
+    --success-light: #14532D;
+    --danger-light: #7F1D1D;
+    
+    --background: #0F172A;
+    --card-background: #1E293B;
+    
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    
+    --border: #334155;
+    --shadow-tab: 0 4px 6px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    --tabs-bg: #1E293B;       
+    --table-header-bg: #1E293B;
 }

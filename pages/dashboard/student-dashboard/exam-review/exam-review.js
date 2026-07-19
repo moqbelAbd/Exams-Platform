@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function getAttemptFromStorage(attemptId) {
         const attempts = getAllAttempts();
-        return attempts.find(a => String(a.id) === String(attemptId)) || null;
+        return attempts.find(a => String(a.attemptId) === String(attemptId)) || null;
     }
 
     function escapeHtml(str) {

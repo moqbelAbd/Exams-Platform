@@ -264,3 +264,103 @@ td .delete_btn svg path {
   stroke-width: 2.5px; 
 }
 
+
+
+/* -----------------------------------
+   Dashboard: Dark Mode Styles
+------------------------------------ */
+
+/* Cards & Icons */
+[data-theme="dark"] .card {
+    background-color: var(--card-background); /* Overrides the hardcoded white */
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .icon-bg {
+    /* Replaces the light blue #eff6ff with a subtle transparent overlay */
+    background-color: rgba(255, 255, 255, 0.05); 
+}
+
+/* Tabs Container & Active Tab */
+[data-theme="dark"] main .tabs {
+    background-color: var(--background); /* Replaces #F1F5F9 */
+    border: 1px solid var(--border); /* Optional: gives the tab container definition */
+}
+
+[data-theme="dark"] main .tabs .active-tab {
+    background-color: var(--card-background); /* Overrides white */
+    color: var(--text-primary);
+    box-shadow: var(--shadow-tab); /* Uses the custom dark mode shadow we made earlier! */
+}
+
+[data-theme="dark"] main .tabs .inactive-tab {
+    background-color: transparent !important; /* Removes any lingering white background */
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] main .tabs .inactive-tab:hover {
+    color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.05) !important; /* Subtle highlight on hover */
+}
+
+/* Searchbox */
+[data-theme="dark"] main .searchbox {
+    background-color: var(--background);
+}
+
+[data-theme="dark"] main .searchbox input {
+    background-color: transparent; /* Lets the container background show through */
+    color: var(--text-primary);
+}
+
+/* -----------------------------------
+   Table Status Badges & Buttons
+------------------------------------ */
+
+/* Active Status Badge */
+
+[data-theme="dark"] table thead th,
+[data-theme="dark"] .table thead th {
+    background-color: var(--card-background) !important; /* Overrides Bootstrap's stark white */
+    color: var(--text-secondary) !important;
+    border-bottom: 1px solid var(--border) !important;
+    font-weight: var(--medium-font-weight);
+}
+
+[data-theme="dark"] td .exam-status.active {
+    background-color: rgba(0, 166, 62, 0.15); /* Soft, transparent green */
+    border-color: rgba(0, 166, 62, 0.3);
+    color: #4ade80; /* Lighter green text for readability */
+}
+
+/* Inactive Status Badge */
+[data-theme="dark"] td .exam-status.inactive {
+    background-color: rgba(106, 114, 130, 0.2); /* Soft, transparent gray */
+    border-color: var(--border);
+    color: var(--text-secondary);
+}
+
+/* Table Hover Effects */
+[data-theme="dark"] td .exam-set_active:hover {
+    background-color: rgba(255, 255, 255, 0.05); /* White transparent hover instead of black */
+}
+
+/* Attempts Button */
+[data-theme="dark"] td .attempts_btn {
+    background-color: rgba(37, 99, 235, 0.2); 
+    color: #60a5fa; /* Lighter blue text */
+}
+
+[data-theme="dark"] td .attempts_btn:hover {
+    background-color: rgba(37, 99, 235, 0.3);
+}
+
+/* Delete Button */
+[data-theme="dark"] table .delete_btn {
+    background-color: rgba(231, 0, 11, 0.15); /* Replaces the harsh pink/red #fef2f2 */
+    color: #f87171; /* Lighter red text */
+}
+
+[data-theme="dark"] table .delete_btn:hover {
+    background-color: rgba(231, 0, 11, 0.25);
+}

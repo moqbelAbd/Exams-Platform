@@ -15,7 +15,7 @@ export function loadHeader() {
         teacherDashboard: "/pages/dashboard/teacher-dashboard/teacher-dashboard.html",
         studentDashboard: "/pages/dashboard/student-dashboard/student-dashboard.html"
     };
-    
+
     // Prevent unauthenticated users from accessing any dashboard
     if (path.includes("/pages/dashboard/") && !isSignedIn) {
         window.location.href = pages.login;
@@ -87,6 +87,9 @@ export function loadHeader() {
                 ${profileLink}
             </nav>
             <div class="auth-buttons">
+            <button id="theme-toggle-btn" style="background: none; border: none; cursor: pointer; color: var(--text-primary); font-size: 1.25rem;">
+                    <i id="theme-icon" class="fa-solid fa-moon"></i>
+                </button>
                 ${authButton}
             </div>
         </div>
@@ -98,7 +101,7 @@ export function loadHeader() {
             e.preventDefault();
             const profilePanel = document.getElementById("user-profile");
             if (profilePanel) {
-                profilePanel.style.display = profilePanel.style.display === "block" ? "none" : "block";
+                profilePanel.style.display = profilePanel.style.display === "flex" ? "none" : "block";
             }
         });
     }
@@ -108,6 +111,33 @@ export function loadHeader() {
         logoutBtn.addEventListener("click", () => {
             sessionStorage.removeItem("auth");
             location.href = pages.home;
+        });
+    }
+
+    const themeToggleBtn = document.getElementById("theme-toggle-btn");
+    const themeIcon = document.getElementById("theme-icon");
+    
+    // Check local storage on load and apply if dark
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme === "dark") {
+        document.body.setAttribute("data-theme", "dark");
+        themeIcon.classList.replace("fa-moon", "fa-sun");
+    }
+
+    // Toggle click event
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener("click", () => {
+            const isDark = document.body.getAttribute("data-theme") === "dark";
+            
+            if (isDark) {
+                document.body.removeAttribute("data-theme");
+                localStorage.setItem("theme", "light");
+                themeIcon.classList.replace("fa-sun", "fa-moon");
+            } else {
+                document.body.setAttribute("data-theme", "dark");
+                localStorage.setItem("theme", "dark");
+                themeIcon.classList.replace("fa-moon", "fa-sun");
+            }
         });
     }
 }

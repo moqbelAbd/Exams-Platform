@@ -28,7 +28,7 @@
     border-radius: 8px;
     border: 1px solid var(--border);
     width: 90%;
-    max-width: 450px; /* Prevents it from getting too wide on large screens */
+    max-width: 450px; 
     background-color: white;
     
     /* If the screen is very small, this allows the inside of the modal to scroll */
@@ -56,3 +56,31 @@
 #user-profile .role-badge i {
     font-size: 0.8rem;
 }
+
+
+/* -----------------------------------
+   Profile Modal: Dark Mode Styles
+------------------------------------ */
+
+[data-theme="dark"] #user-profile .bg-white {
+    background-color: var(--card-background) !important;
+}
+
+[data-theme="dark"] #user-profile .profile-modal-content {
+    background-color: var(--card-background) !important; 
+    border-color: var(--border);
+}
+
+[data-theme="dark"] #user-profile .list-group-item {
+    background-color: transparent !important;
+    border-color: var(--border); 
+}
+
+[data-theme="dark"] #user-profile .border-bottom {
+    border-bottom-color: var(--border) !important;
+}
+
+[data-theme="dark"] #user-profile .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
