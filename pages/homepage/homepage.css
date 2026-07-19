@@ -22,8 +22,19 @@ a {
     text-decoration: none;
 }
 
+/* Container adjustments */
 .hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem; 
     padding: var(--spacing-2xl) 0 var(--spacing-xl);
+}
+
+/* Wrapper for the left-side text */
+.hero-content {
+    flex: 1;
+    max-width: 640px;
 }
 
 .hero-eyebrow {
@@ -46,15 +57,49 @@ a {
     font-weight: var(--bold-font-weight);
     line-height: 1.2;
     margin: 0 0 var(--spacing-md);
-    max-width: 640px;
+    max-width: 100%; 
 }
 
 .hero-section p {
     font-size: var(--text-base);
     color: var(--text-secondary);
-    max-width: 640px;
     margin: 0;
     line-height: 1.6;
+    max-width: 100%;
+}
+
+/* ===== New Quote Card Styles ===== */
+.hero-quote {
+    flex: 0 0 320px; 
+    background-color: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.hero-quote blockquote {
+    margin: 0;
+    font-size: var(--text-base);
+    font-style: italic;
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+.hero-quote cite {
+    display: block;
+    margin-top: 1rem;
+    font-size: var(--text-sm);
+    font-weight: var(--semi-bold-font-weight);
+    color: var(--text-secondary);
+}
+
+/* -----------------------------------
+   Hero Section: Dark Mode Styles
+------------------------------------ */
+[data-theme="dark"] .hero-quote {
+    background-color: var(--card-background);
+    border-color: var(--border);
 }
 
 .hero-stats {

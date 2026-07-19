@@ -1,6 +1,6 @@
 import { QuestionType } from "../../../../common-js/models/questionType.js";
 import { ExamStatus } from "../../../../common-js/models/examStatus.js";
-
+import { fetchTriviaQuestions } from "./questions-api.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     const queContainer = document.querySelector('.que-container');
@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cancelBtn = document.getElementById('cancel-btn');
     const backBtn = document.getElementById('back-btn');
     const examTitleInput = document.getElementById('exam-title');
+    const generateTriviaBtn = document.getElementById('generate-trivia-btn');
 
     let questionIdCounter = 0;
 
@@ -101,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    function createQuestionCard() {
+    function createQuestionCard(prefillData = null) {
         questionIdCounter++;
         const qId = questionIdCounter;
 
@@ -141,6 +142,42 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         queContainer.appendChild(card);
+
+if (prefillData && prefillData.questionText) {
+            const typeSelect = card.querySelector('.question-type');
+            const dynamicArea = card.querySelector('.question-dynamic-area');
+
+            if (prefillData.rawType === 'boolean') {
+                // 1. Handle True/False Questions
+                typeSelect.value = QuestionType.TRUE_FALSE;
+                dynamicArea.innerHTML = dynamicAreaMarkup(QuestionType.TRUE_FALSE);
+                
+                card.querySelector('.question-text').value = prefillData.questionText;
+                
+                // The API returns "True" or "False". We need it lowercase to match your <option value="true">
+                const correctValue = prefillData.correctAnswer.toLowerCase();
+                card.querySelector('.correct-answer-select').value = correctValue;
+
+            } else {
+                // 2. Handle Multiple Choice Questions
+                typeSelect.value = QuestionType.MCQ;
+                dynamicArea.innerHTML = dynamicAreaMarkup(QuestionType.MCQ);
+
+                card.querySelector('.question-text').value = prefillData.questionText;
+                
+                // Fill in the 4 shuffled options
+                const optionInputs = card.querySelectorAll('.option-input');
+                prefillData.options.forEach((optText, idx) => {
+                    if (optionInputs[idx]) {
+                        optionInputs[idx].value = optText;
+                    }
+                });
+                
+                // Set the dropdown to the correct answer index
+                card.querySelector('.correct-answer-select').value = prefillData.correctIndex;
+            }
+        }
+
         renumberQuestions();
     }
 
@@ -169,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renumberQuestions();
     });
 
-    addQuestionBtn.addEventListener('click', createQuestionCard);
+     addQuestionBtn.addEventListener('click', () => createQuestionCard());
 
     backBtn?.addEventListener('click', () => {
         window.history.back();
@@ -276,6 +313,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
         return { title, questions };
     }
+
+
+    generateTriviaBtn.addEventListener('click', async () => {
+        const originalText = generateTriviaBtn.innerHTML;
+        generateTriviaBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Generating...';
+        generateTriviaBtn.disabled = true;
+
+        const triviaQuestions = await fetchTriviaQuestions();
+        
+        if (triviaQuestions && triviaQuestions.length > 0) {
+            // Remove the default blank question if it hasn't been typed in yet
+            const existingCards = queContainer.querySelectorAll('.question-card');
+            if (existingCards.length === 1) {
+                const firstText = existingCards[0].querySelector('.question-text').value;
+                if (!firstText) {
+                    existingCards[0].remove();
+                }
+            }
+
+            // Create a card for every fetched question
+            triviaQuestions.forEach(qData => {
+                createQuestionCard(qData);
+            });
+        } else {
+            alert('Failed to load trivia questions. Check console for details.');
+        }
+
+        // Restore button state
+        generateTriviaBtn.innerHTML = originalText;
+        generateTriviaBtn.disabled = false;
+        
+    });
+
 
     saveBtn.addEventListener('click', () => {
         const examData = collectExamData();
