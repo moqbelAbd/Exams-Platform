@@ -78,7 +78,7 @@ form.addEventListener("submit", (e) => {
     users.push(newStudent);
     saveStudent(users);
 
-    alert("Student successfully added!");
+    // alert("Student successfully added!");
     form.reset(); 
 
     const searchInput = document.querySelector(".searchbox > input");

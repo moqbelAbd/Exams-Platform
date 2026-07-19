@@ -362,7 +362,7 @@ if (prefillData && prefillData.questionText) {
         localStorage.setItem("exams", JSON.stringify(exams));
 
         window.location.href = "/pages/dashboard/teacher-dashboard/teacher-dashboard.html";
-        alert("Exam saved successfully!");
+        // alert("Exam saved successfully!");
     });
 
     // start with one question by default
